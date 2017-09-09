@@ -6,8 +6,10 @@ app.controller('mainController', ['$http', function($http) {
   this.user = {};
   this.users = [];
   this.userPass = {};
+  this.home = true;
   this.login = false;
   this.register = false;
+  this.userPage = true;
   this.url = 'http://localhost:3000';
   // this.test = 'hi';
   this.login = function(userPass) {
@@ -58,6 +60,9 @@ app.controller('mainController', ['$http', function($http) {
       this.login = false;
     }
   }
-
+  this.showAccount = function(){
+    this.userPage = !this.userPage;
+    this.home = !this.home;
+  }
 
 }]); //end controller
