@@ -6,7 +6,7 @@ app.controller('mainController', ['$http', function($http) {
   this.user = {};
   this.users = [];
   this.userPass = {};
-
+  this.userModal = false;
   this.url = 'http://localhost:3000';
   // this.test = 'hi';
   this.login = function(userPass) {
@@ -45,4 +45,9 @@ app.controller('mainController', ['$http', function($http) {
     location.reload();
   }
 
-}]);
+  this.toggleModal = function(){
+    this.userModal = !this.userModal;
+  }
+
+
+}]); //end controller
