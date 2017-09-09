@@ -14,9 +14,9 @@
   <div class="container">
     <h3>Travel Books App</h3>
     <p>Lorem boom shackalack dang daahng dawg tellivizzle, consectetizzle phat dope. We gonna chung crunk velizzle, aliquet volutpizzle, suscipizzle shit, gravida vizzle, i'm in the shizzle. Pellentesque fo shizzle tortizzle. Sure erizzle. Dope izzle brizzle dapibus turpis gangster . Maurizzle dizzle nibh bizzle turpizzle. in tortizzle. Pellentesque things cool you son of a bizzle. In hac hizzle platea dictumst. We gonna chung dapibizzle. Curabitur tellizzle urna, pretizzle eu, mattizzle ac, vitae, nunc. Yo suscipit. Integer semper break yo neck, yall sizzle rizzle.</p>
-    <h5 ng-click="ctrl.toggleModal()">Log In</h5> / <h5>Register</h5>
+    <h5> <section ng-click="ctrl.toggleLogin()">Log In</section> / <section ng-click="ctrl.toggleRegister()">Register</section></h5>
 
-    <div class="user-modal" ng-show="ctrl.userModal">
+    <div class="login-modal" ng-show="ctrl.login">
     <form ng-submit="ctrl.login(userPass)">
       Username <input type="text" ng-model="userPass.username" placeholder="username"/> <br/>
       Password <input type="password" ng-model="userPass.password" placeholder="password"/>
@@ -24,8 +24,10 @@
       <input type="submit" value="Log In"/>
     </form>
     <br/>
-     Not a registered user? Create an account.
+     Not a registered user? <b ng-click="ctrl.toggleRegister()">Create an account.</b>
   </div>
+
+
 
     <a href="#" ng-click="ctrl.logout()">Log Out</a>
     <!-- {{ ctrl.test }} -->
@@ -37,6 +39,16 @@
 
     <div ng-repeat="user in ctrl.users">
       <h1>{{ user.username }}</h1>
+    </div>
+
+    <div class="register-modal" ng-show="ctrl.register">
+      <form>
+        Username <input type="text"/>
+        Password <input type="password"/>
+        Re-enter Password <input type="password"/>
+        Profile Photo (optional) <input type="text" placeholder="URL only"/>
+        <input type="submit" value="Create Account"/>
+      </form>
     </div>
 
     <!-- end container -->
