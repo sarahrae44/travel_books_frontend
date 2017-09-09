@@ -7,7 +7,7 @@ app.controller('mainController', ['$http', function($http) {
   this.users = [];
   this.userPass = {};
   this.home = true;
-  this.login = false;
+  this.login = true;
   this.register = false;
   this.userPage = true;
   this.url = 'http://localhost:3000';
@@ -56,8 +56,8 @@ app.controller('mainController', ['$http', function($http) {
   }
   this.toggleRegister = function(){
     this.register = !this.register;
-    if(this.login === true){
-      this.login = false;
+    if(this.login === false){
+      this.login = true;
     }
   }
   this.showAccount = function(){
