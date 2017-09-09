@@ -45,8 +45,4 @@ app.controller('mainController', ['$http', function($http) {
     location.reload();
   }
 
-  //
-  // this.locationSearch = function(location) {
-  //   console.log(location);
-  // }
 }]);
