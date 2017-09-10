@@ -22,14 +22,14 @@ app.controller('mainController', ['$http', function($http) {
   this.login = function(userPass) {
     // console.log(userPass);
     $http({
-        method: 'POST',
-        url: this.url + '/users/login',
-        data: { user: { username: userPass.username, password: userPass.password }},
-      }).then(function(response) {
-        // console.log(response);
-        this.user = response.data.user;
-        localStorage.setItem('token', JSON.stringify(response.data.token));
-      }.bind(this));
+      method: 'POST',
+      url: this.url + '/users/login',
+      data: { user: { username: userPass.username, password: userPass.password }},
+    }).then(function(response) {
+      // console.log(response);
+      this.user = response.data.user;
+      localStorage.setItem('token', JSON.stringify(response.data.token));
+    }.bind(this));
   }
 
   this.getUsers = function() {
@@ -40,8 +40,8 @@ app.controller('mainController', ['$http', function($http) {
         Authorization: 'Bearer ' + JSON.parse(localStorage.getItem('token'))
       }
     }).then(function(response) {
-    // console.log(response);
-    // this.error = "Unauthorized"
+      // console.log(response);
+      // this.error = "Unauthorized"
       if (response.data.status == 401) {
         this.error = "Unauthorized";
       } else {
@@ -69,10 +69,15 @@ app.controller('mainController', ['$http', function($http) {
   }
   this.showAccount = function(){
     this.userPage = !this.userPage;
-    this.home = !this.home;
-    this.journal = !this.journal;
-    this.destinations = !this.destinations;
-    this.books = !this.books;
+    if (this.home === false){
+      this.home = true;
+    } else if (this.journal === false){
+      this.journal = true;
+    } else if (this.destinations === false){
+      this.destinations = true;
+    } else if (this.books === false) {
+      this.books = true;
+    } else {console.log('showAccount is broken');}
   }
 
 
