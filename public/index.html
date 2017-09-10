@@ -55,6 +55,32 @@
 
 
 
+
+      </div>
+
+    <!--  Login Modal  ----------------------------------->
+    <div class="login-modal" ng-hide="ctrl.login">
+      <form ng-submit="ctrl.login(userPass)">
+        Username <input type="text" ng-model="userPass.username" placeholder="username"/> <br/>
+        Password <input type="password" ng-model="userPass.password" placeholder="password"/>
+        <br/>
+        <input type="submit" value="Log In"/>
+      </form>
+      <br/>
+      Not a registered user? <b ng-click="ctrl.toggleRegister()">Create an account.</b>
+    </div>
+    <!--  End Login Modal ----------------------------------->
+    <!--  Register Modal  ----------------------------------->
+    <div class="register-modal" ng-show="ctrl.register">
+      <form>
+        Username <input type="text"/>
+        Password <input type="password"/>
+        Re-enter Password <input type="password"/>
+        Profile Photo (optional) <input type="text" placeholder="URL only"/>
+        <input type="submit" value="Create Account"/>
+      </form>
+    </div>
+    <!--  End Login Modal  ----------------------------------->
     <!-- <h4 ng-click="ctrl.getUsers()">Click to see secret stuff</h4> -->
 
     <div> {{ ctrl.error }} </div>
@@ -129,5 +155,16 @@
 
     <!--  End Books Page ------------------------------------>
 
-</body>
+
+    <!---- Signup/Login Forms Section ---->
+    <!-- <section id="forms" ng-include="'./forms.html'"></section> -->
+
+    <!---- Books Section ---->
+    <!-- <section id="book" ng-include="'./book.html'"></section> -->
+
+    <!---- Destination Section ---->
+    <!-- <section id="destination" ng-include="'./dest.html'"></section> -->
+
+
+  </body>
 </html>
