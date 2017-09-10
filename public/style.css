@@ -1,5 +1,8 @@
 @import url('https://getbootstrap.com/dist/css/bootstrap.css');
 
+/** {
+  border: 1px solid teal;
+}*/
 body {
   background-color: tan;
   font-family: Helvetica;

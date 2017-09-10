@@ -68,5 +68,4 @@ app.controller('mainController', ['$http', function($http) {
     this.home = !this.home;
   }
 
-
-}]);
+}]); //end controller  
