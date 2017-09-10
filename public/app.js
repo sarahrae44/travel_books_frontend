@@ -12,18 +12,21 @@ app.controller('mainController', ['$http', function($http) {
   this.userPage = true;
   this.url = 'http://localhost:3000';
   // this.test = 'hi';
+
   this.login = function(userPass) {
-    // console.log(userPass);
+    console.log('The userPass.username & userPass.password ' + userPass.username + ' : ' + userPass.password)
+    this.userPass = userPass;
     $http({
         method: 'POST',
         url: this.url + '/users/login',
-        data: { user: { username: userPass.username, password: userPass.password }},
+        data: { username: this.userPass.username, password: this.userPass.password },
       }).then(function(response) {
-        // console.log(response);
+        console.log(response);
         this.user = response.data.user;
         localStorage.setItem('token', JSON.stringify(response.data.token));
       }.bind(this));
   }
+
 
   this.getUsers = function() {
     $http({
@@ -33,7 +36,7 @@ app.controller('mainController', ['$http', function($http) {
         Authorization: 'Bearer ' + JSON.parse(localStorage.getItem('token'))
       }
     }).then(function(response) {
-    // console.log(response);
+    console.log(response);
     // this.error = "Unauthorized"
       if (response.data.status == 401) {
         this.error = "Unauthorized";
@@ -65,4 +68,4 @@ app.controller('mainController', ['$http', function($http) {
     this.home = !this.home;
   }
 
-}]); //end controller
+}]); //end controller  
