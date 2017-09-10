@@ -9,13 +9,16 @@ app.controller('mainController', ['$http', function($http) {
 
   //hidden pages
   this.home = true;
-  this.login = true;
+  this.login = false;
   this.register = false;
   this.userPage = true;
   this.journal = true;
   this.destinations = true;
   this.books = true;
   //
+
+  //input requests
+  this.showJournalForm = false;
 
   this.url = 'http://localhost:3000';
   // this.test = 'hi';
@@ -109,7 +112,7 @@ app.controller('mainController', ['$http', function($http) {
   }
 
   this.createEntry = function(){
-    console.log("I'm going to create an entry");
+    this.showJournalForm = true;
   }
 
   this.addBook = function(){
@@ -134,6 +137,10 @@ app.controller('mainController', ['$http', function($http) {
 
   this.savedBooks = function(){
     console.log("Saved books listed");
+  }
+
+  this.closeForm = function(){
+    this.show = false;
   }
 
 }]); //end controller
