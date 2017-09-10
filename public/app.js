@@ -6,7 +6,10 @@ app.controller('mainController', ['$http', function($http) {
   this.user = {};
   this.users = [];
   this.userPass = {};
-
+  this.home = true;
+  this.login = true;
+  this.register = false;
+  this.userPage = true;
   this.url = 'http://localhost:3000';
   // this.test = 'hi';
   this.login = function(userPass) {
@@ -45,4 +48,21 @@ app.controller('mainController', ['$http', function($http) {
     location.reload();
   }
 
-}]);
+  this.toggleLogin = function(){
+    this.login = !this.login;
+    if(this.register === true){
+      this.register = false;
+    }
+  }
+  this.toggleRegister = function(){
+    this.register = !this.register;
+    if(this.login === false){
+      this.login = true;
+    }
+  }
+  this.showAccount = function(){
+    this.userPage = !this.userPage;
+    this.home = !this.home;
+  }
+
+}]); //end controller
