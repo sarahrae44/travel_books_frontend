@@ -38,16 +38,16 @@ app.controller('mainController', ['$http', function($http) {
     console.log('The userPass.username & userPass.password ' + userPass.username + ' : ' + userPass.password)
     this.userPass = userPass;
     $http({
-<<<<<<< HEAD
-      method: 'POST',
-      url: this.url + '/users/login',
-      data: { user: { username: userPass.username, password: userPass.password }},
-    }).then(function(response) {
-      // console.log(response);
-      this.user = response.data.user;
-      localStorage.setItem('token', JSON.stringify(response.data.token));
-    }.bind(this));
-=======
+
+    //   method: 'POST',
+    //   url: this.url + '/users/login',
+    //   data: { user: { username: userPass.username, password: userPass.password }},
+    // }).then(function(response) {
+    //   // console.log(response);
+    //   this.user = response.data.user;
+    //   localStorage.setItem('token', JSON.stringify(response.data.token));
+    // }.bind(this));
+
         method: 'POST',
         url: this.url + '/users/login',
         data: { username: this.userPass.username, password: this.userPass.password },
@@ -56,7 +56,7 @@ app.controller('mainController', ['$http', function($http) {
         this.user = response.data.user;
         localStorage.setItem('token', JSON.stringify(response.data.token));
       }.bind(this));
->>>>>>> 73624da618dfeb7ef955ce36c4a578a8249a3e70
+
   }
 
 
