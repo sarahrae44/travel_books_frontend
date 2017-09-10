@@ -8,11 +8,13 @@ app.controller('mainController', ['$http', function($http) {
   this.userPass = {};
 
   //hidden pages
-
+  this.home = true;
   this.login = true;
   this.register = false;
   this.userPage = true;
-
+  this.journal = true;
+  this.destinations = true;
+  this.books = true;
   //
 
   this.url = 'http://localhost:3000';
@@ -36,19 +38,7 @@ app.controller('mainController', ['$http', function($http) {
     console.log('The userPass.username & userPass.password ' + userPass.username + ' : ' + userPass.password)
     this.userPass = userPass;
     $http({
-// <<<<<<< HEAD
 
-    //   method: 'POST',
-    //   url: this.url + '/users/login',
-    //   data: { user: { username: userPass.username, password: userPass.password }},
-    // }).then(function(response) {
-    //   // console.log(response);
-    //   this.user = response.data.user;
-    //   localStorage.setItem('token', JSON.stringify(response.data.token));
-    // }.bind(this));
-
-// =======
-// <<<<<<< HEAD
 //       method: 'POST',
 //       url: this.url + '/users/login',
 //       data: { user: { username: userPass.username, password: userPass.password }},
@@ -57,8 +47,7 @@ app.controller('mainController', ['$http', function($http) {
 //       this.user = response.data.user;
 //       localStorage.setItem('token', JSON.stringify(response.data.token));
 //     }.bind(this));
-// =======
-// >>>>>>> c2c3d840aa549a094281d79c84bbc6e200527425
+
         method: 'POST',
         url: this.url + '/users/login',
         data: { username: this.userPass.username, password: this.userPass.password },
@@ -67,11 +56,7 @@ app.controller('mainController', ['$http', function($http) {
         this.user = response.data.user;
         localStorage.setItem('token', JSON.stringify(response.data.token));
       }.bind(this));
-// <<<<<<< HEAD
-//
-// =======
-// // >>>>>>> 73624da618dfeb7ef955ce36c4a578a8249a3e70
-// >>>>>>> c2c3d840aa549a094281d79c84bbc6e200527425
+
   }
 
 
