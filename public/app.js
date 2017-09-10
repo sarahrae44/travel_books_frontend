@@ -58,7 +58,7 @@ app.controller('mainController', ['$http', function($http) {
       url: this.url + '/users',
       method: 'GET',
       headers: {
-        Authorization: 'Bearer ' + JSON.parse(localStorage.getItem('token'))
+      Authorization: 'Bearer ' + JSON.parse(localStorage.getItem('token'))
       }
     }).then(function(response) {
     console.log(response);
@@ -117,6 +117,12 @@ app.controller('mainController', ['$http', function($http) {
     console.log("Account details");
   }
 
+  this.closeForm = function(){
+    this.show = false;
+  }
+
+  //Tiffany:  (routing to show individual html pages?)
+
   this.journalEntries = function(){
     console.log("Journal entries listed");
   }
@@ -129,8 +135,6 @@ app.controller('mainController', ['$http', function($http) {
     console.log("Saved books listed");
   }
 
-  this.closeForm = function(){
-    this.show = false;
-  }
+
 
 }]); //end controller
