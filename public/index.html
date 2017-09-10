@@ -96,7 +96,7 @@
 
     <!--  Journal Page ------------------------------------>
 
-    <div class="container journal">
+    <div class="container journal" ng-hide="ctrl.journal">
       <h4>My Journal</h4>
       <div class="entry">
         <!-- add ng repeat of entries -->
@@ -108,7 +108,7 @@
 
     <!--  Destinations Page ------------------------------------>
 
-    <div class="container destinations">
+    <div class="container destinations" ng-hide="ctrl.destinations">
       <h4>My Travels</h4>
       <div class="entry">
         <!-- add ng repeat of entries -->
@@ -120,7 +120,7 @@
 
     <!--  Books Page ------------------------------------>
 
-    <div class="container books">
+    <div class="container books" ng-hide="ctrl.books">
       <h4>My Library</h4>
       <div class="book-list">
         <!-- add ng repeat of books -->
@@ -128,6 +128,6 @@
     </div>
 
     <!--  End Books Page ------------------------------------>
-    
+
 </body>
 </html>

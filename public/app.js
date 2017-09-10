@@ -6,10 +6,17 @@ app.controller('mainController', ['$http', function($http) {
   this.user = {};
   this.users = [];
   this.userPass = {};
+
+  //hidden pages
   this.home = true;
   this.login = true;
   this.register = false;
   this.userPage = true;
+  this.journal = true;
+  this.destinations = true;
+  this.books = true;
+  //
+
   this.url = 'http://localhost:3000';
   // this.test = 'hi';
   this.login = function(userPass) {
@@ -63,6 +70,11 @@ app.controller('mainController', ['$http', function($http) {
   this.showAccount = function(){
     this.userPage = !this.userPage;
     this.home = !this.home;
+    this.journal = !this.journal;
+    this.destinations = !this.destinations;
+    this.books = !this.books;
   }
+
+
 
 }]); //end controller
