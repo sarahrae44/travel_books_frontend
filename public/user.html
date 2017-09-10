@@ -1,0 +1,27 @@
+<!--   User Page ------------------------------------>
+
+<div class="container user-page" ng-show="ctrl.userPage">
+  <a href="#" ng-click="ctrl.logout()">Log Out</a>
+  <!-- {{ ctrl.test }} -->
+  <p>Logged in username: {{ ctrl.user.username }} </p>
+  <section>
+    <h2>What would you like to do today?</h2>
+    <ul>
+      <!-- buttons not looking right -->
+      <li class="btn btn-default"ng-click="createEntry">Create a journal entry</li>
+      <li class="btn btn-default">Search for a book</li>
+      <li class="btn btn-default">Add a destination</li>
+    </ul>
+  </section>
+  <section>
+    <img src="" alt="Profile Photo"/>
+    <ul>
+      <li class="btn btn-default">Account Details</li>
+      <li class="btn btn-default">Journal Entries</li>
+      <li class="btn btn-default">Saved Destinations</li>
+      <li class="btn btn-default">Saved Books</li>
+    </ul>
+  </section>
+</div>
+
+<!--  End User Page ------------------------------------>

@@ -1,9 +1,18 @@
 @import url('https://getbootstrap.com/dist/css/bootstrap.css');
 
 /** {
-  border: 1px solid teal;
+  border: 1px solid hotpink;
 }*/
+
 body {
-  background-color: tan;
-  font-family: Helvetica;
+
+  font-family: 'Raleway', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Amatic SC', cursive;
+}
+
+li {
+  list-style: none;
 }
