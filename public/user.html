@@ -1,0 +1,49 @@
+<!--   User Page ------------------------------------>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Raleway" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body ng-controller="mainController as ctrl">
+    <div class="container user-page" ng-show="ctrl.userPage">
+      <a href="#" ng-click="ctrl.logout()">Log Out</a>
+      <!-- {{ ctrl.test }} -->
+
+      <!-- this works now -->
+      <p>Logged in username: {{ ctrl.userPass.username }} </p>
+
+      <!-- end of this works now -->
+
+
+      <section>
+        <h2>What would you like to do today?</h2>
+        <ul>
+          <!-- buttons not looking right -->
+
+
+          <li><button class="btn btn-default" ng-click="ctrl.createEntry()">Create a journal entry</li>
+          <li><button class="btn btn-default" ng-click="ctrl.addBook()">Add a book</li>
+          <li><button class="btn btn-default" ng-click="ctrl.addDest()">Add a destination</li>
+        </ul>
+      </section>
+      <section>
+        <img src="" alt="Profile Photo"/>
+        <ul>
+          <li><button class="btn btn-default" ng-click="ctrl.userAccount()">Account Details</li>
+          <li><button class="btn btn-default" ng-click="ctrl.journalEntries()">Journal Entries</li>
+          <li><button class="btn btn-default" ng-click="ctrl.savedDest()">Saved Destinations</li>
+          <li><button class="btn btn-default" ng-click="ctrl.savedBooks()">Saved Books</li>
+        </ul>
+      </section>
+    </div>
+  </body>
+</html>
+
+
+
+<!--  End User Page ------------------------------------>

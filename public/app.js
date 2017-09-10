@@ -108,4 +108,32 @@ app.controller('mainController', ['$http', function($http) {
     } else {console.log('showAccount is broken');}
   }
 
+  this.createEntry = function(){
+    console.log("I'm going to create an entry");
+  }
+
+  this.addBook = function(){
+    console.log("I'm going to add a book");
+  }
+
+  this.addDest = function(){
+    console.log("I'm going to add a destination");
+  }
+
+  this.userAccount = function(){
+    console.log("Account details");
+  }
+
+  this.journalEntries = function(){
+    console.log("Journal entries listed");
+  }
+
+  this.savedDest = function(){
+    console.log("Saved destinations listed");
+  }
+
+  this.savedBooks = function(){
+    console.log("Saved books listed");
+  }
+
 }]); //end controller
