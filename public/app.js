@@ -4,17 +4,20 @@ const app = angular.module('auth_app', []);
 
 app.controller('mainController', ['$http', function($http) {
   this.user = {};
+  console.log('this.user is: ', this.user);
   this.users = [];
   this.userPass = {};
-
+  console.log('this.userPass is: ', this.userPass);
+  loggedin = false;
+  console.log(loggedin);
   //hidden pages
   this.home = true;
   this.login = false;
   this.register = false;
   this.userPage = true;
-  this.journal = true;
-  this.destinations = true;
-  this.books = true;
+  // this.journal = false;
+  // this.destinations = true;
+  // this.books = true;
   //
 
   //input requests
@@ -40,7 +43,10 @@ app.controller('mainController', ['$http', function($http) {
 
     console.log('The userPass.username & userPass.password ' + userPass.username + ' : ' + userPass.password)
     this.userPass = userPass;
-
+    loggedin = true;
+    console.log(loggedin);
+    console.log('userPass.username is: ', userPass.username);
+    console.log('userPass.password is: ', userPass.password);
     $http({
       method: 'POST',
       url: this.url + '/users/login',
@@ -89,17 +95,8 @@ app.controller('mainController', ['$http', function($http) {
     }
   }
   this.showAccount = function(){
-    this.userPage = !this.userPage;
-    if (this.home === false){
-      this.home = true;
-    } else if (this.journal === false){
-      this.journal = true;
-    } else if (this.destinations === false){
-      this.destinations = true;
-    } else if (this.books === false) {
-      this.books = true;
-    } else {console.log('showAccount is broken');}
-  }
+      this.userPage = !this.userPage;
+    }
 
   this.createEntry = function(){
     this.showJournalForm = true;
@@ -124,6 +121,7 @@ app.controller('mainController', ['$http', function($http) {
   //Tiffany:  (routing to show individual html pages?)
 
   this.journalEntries = function(){
+    this.journal = !this.journal;
     console.log("Journal entries listed");
   }
 
