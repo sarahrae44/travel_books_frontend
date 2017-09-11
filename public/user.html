@@ -1,27 +1,72 @@
 <!--   User Page ------------------------------------>
+    <div class="container user-page" ng-show="ctrl.userPage">
 
-<div class="container user-page" ng-show="ctrl.userPage">
-  <a href="#" ng-click="ctrl.logout()">Log Out</a>
-  <!-- {{ ctrl.test }} -->
-  <p>Logged in username: {{ ctrl.user.username }} </p>
-  <section>
-    <h2>What would you like to do today?</h2>
-    <ul>
-      <!-- buttons not looking right -->
-      <li class="btn btn-default"ng-click="createEntry">Create a journal entry</li>
-      <li class="btn btn-default">Search for a book</li>
-      <li class="btn btn-default">Add a destination</li>
-    </ul>
-  </section>
-  <section>
-    <img src="" alt="Profile Photo"/>
-    <ul>
-      <li class="btn btn-default">Account Details</li>
-      <li class="btn btn-default">Journal Entries</li>
-      <li class="btn btn-default">Saved Destinations</li>
-      <li class="btn btn-default">Saved Books</li>
-    </ul>
-  </section>
-</div>
+      <!-- {{ ctrl.test }} -->
+
+      <!-- this works now -->
+      
+
+      <!-- end of this works now -->
+
+
+      <section>
+        <h2>What would you like to do today?</h2>
+        <ul>
+          <!-- buttons not looking right -->
+
+          <li><button class="btn btn-default" ng-click="ctrl.createEntry()">Create a journal entry</li>
+<!-- not sure what the submit would be for this -->
+            <form ng-if="ctrl.showJournalForm" class="ng-modal-overlay ng-modal-dialog" ng-submit="ctrl.journalEntry(postEntry)">
+              <textarea cols="50" rows="10" ng-model="postEntry.post" placeholder="post"/></textarea>
+              <input type="submit"/>
+            </form>
+
+
+          <li><button class="btn btn-default" ng-click="ctrl.createBook()">Add a book</li>
+            <form ng-if="ctrl.showBookForm" class="ng-modal-overlay ng-modal-dialog" ng-submit="ctrl.addBook(book)">
+              <input type="text" ng-model="book.title" placeholder="Title"/>
+              <input type="text" ng-model="book.author" placeholder="Author"/>
+              <input type="text" ng-model="book.isbn" placeholder="ISBN"/>
+              <input type="text" ng-model="book.genre" placeholder="Genre"/>
+              <input type="submit"/>
+            </form>
+
+          <li><button class="btn btn-default" ng-click="ctrl.createDest()">Add a destination</li>
+            <form ng-if="ctrl.showDestForm" class="ng-modal-overlay ng-modal-dialog" ng-submit="ctrl.addDest(destination)">
+              <input type="text" ng-model="destination.name" placeholder="Destination"/>
+              <input type="text" ng-model="destination.purpose" placeholder="Purpose"/>
+              <input type="text" ng-model="destination.transportation" placeholder="Transportation"/>
+              <input type="text" ng-model="destination.season" placeholder="Season"/>
+              <input type="text" ng-model="destination.climate" placeholder="Climate"/>
+              <input type="submit"/>
+            </form>
+        </ul>
+      </section>
+
+      <!-- buttons that go with work Tiffany doing -->
+      <section>
+        <img src="" alt="Profile Photo"/>
+        <ul>
+          <li><button class="btn btn-default" ng-click="ctrl.userAccount()">Account Details</li>
+          <li><button class="btn btn-default" ng-click="ctrl.journalEntries()">Journal Entries</button></li>
+          <li><button class="btn btn-default" ng-click="ctrl.savedDest()">Saved Destinations</li>
+          <li><button class="btn btn-default" ng-click="ctrl.savedBooks()">Saved Books</li>
+        </ul>
+      </section>
+      </div>
+      <!---- Journal Section ---->
+      <section id="journal" ng-include="'./journal.html'"></section>
+
+      <!---- Books Section ---->
+      <section id="book" ng-include="'./book.html'"></section>
+
+      <!---- Destination Section ---->
+      <section id="destination" ng-include="'./dest.html'"></section>
+
+
+  </body>
+</html>
+
+
 
 <!--  End User Page ------------------------------------>
