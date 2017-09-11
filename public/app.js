@@ -22,8 +22,8 @@ app.controller('mainController', ['$http', function($http) {
 
   //hidden pages
   this.home = true;
-  this.login = false;
-  this.register = false;
+  this.loginModal = false;
+  this.registerModal = false;
   this.userPage = false;
   this.journal = false;
   this.destinations = false;
@@ -134,13 +134,13 @@ app.controller('mainController', ['$http', function($http) {
   }
 
   this.toggleLogin = function(){
-    this.login = !this.login;
+    this.loginModal = !this.loginModal;
     if(this.register === true){
       this.register = false;
     }
   }
   this.toggleRegister = function(){
-    this.register = !this.register;
+    this.registerModal = !this.registerModal;
     if(this.login === false){
       this.login = true;
     }
