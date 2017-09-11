@@ -1,6 +1,8 @@
 <!--   User Page ------------------------------------>
-<div class="container user-page" ng-show="ctrl.userPage">
 
+
+<div class="user-page" ng-show="ctrl.userPage">
+<img src="http://www.royalcaribbean.com/connect/wp-content/uploads/2015/01/Caribbean_Vacation-1650x1099.jpg" alt="Royal Caribbean" class="user-img img-responsive"/>
   <!-- {{ ctrl.test }} -->
 
 
@@ -9,13 +11,12 @@
   <!--- Left Side  ---->
 
   <!--- User Options  ---->
-  <section class="col-xs-6">
+  <section class="col-xs-4 col-xs-offset-4">
     <h2>What would you like to do today?</h2>
     <ul>
 
       <!--- Create a journal entry  ---->
       <li><button class="btn btn-default" ng-click="ctrl.createEntry()">Create a journal entry</li>
-        <!-- not sure what the submit would be for this -->
         <form ng-if="ctrl.showJournalForm" class="ng-modal-overlay ng-modal-dialog" ng-submit="ctrl.journalEntry(postEntry)">
           <textarea cols="50" rows="10" ng-model="postEntry.post" placeholder="post"/></textarea>
           <input type="submit"/>
@@ -50,7 +51,7 @@
         <!--- Right side  ---->
 
         <!--- Account Info  ---->
-        <section class="col-xs-6">
+        <section class="col-xs-4">
           <img class="img-responsive" src="" alt="Profile Photo"/>
           <ul>
 
@@ -72,7 +73,7 @@
 
 
 
-          
+
     <!---- Journal Section ---->
     <section id="journal" ng-include="'./journal.html'"></section>
 
