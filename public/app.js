@@ -36,7 +36,7 @@ app.controller('mainController', ['$http', function($http) {
   this.showBookForm = false;
   this.showDestForm = false;
 
-  this.url = 'http://localhost:3000';
+  this.url = 'http://localhost:3000' || 'http://travelbooksapi.herokuapp.com/';
   // this.test = 'hi';
 
   // register new user
