@@ -1,8 +1,12 @@
 <nav class="navbar navbar-inverse navbar-static-top">
+  <!--  Logout Form -->
+  <a href="#forms" class="navbar-text navbar-right" ng-click="ctrl.logout()">Log Out</a>
+  <!-- My Account Link -->
+  <a class="navbar-text navbar-right"><span class="glyphicon glyphicon-user" ng-click="ctrl.showAccount()"></span></p>
     <!-- Login Form -->
-    <a href="#forms" class="navbar-text navbar-right"  ng-click="ctrl.toggleLogin()">Log In</a>
+    <a href="#forms" class="navbar-text"  ng-click="ctrl.toggleLogin()">Log In</a>
     <!-- Register Form -->
-    <a href="#forms" class="navbar-text navbar-right"  ng-click="ctrl.toggleRegister()">Register</a>
-    <!--  Logout Form -->
-    <a href="#forms" class="navbar-text navbar-right" ng-click="ctrl.logout()">Log Out</a>
+    <a href="#forms" class="navbar-text"  ng-click="ctrl.toggleRegister()">Register</a>
+
+
 </nav>
