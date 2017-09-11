@@ -8,9 +8,14 @@ app.controller('mainController', ['$http', function($http) {
   this.users = [];
   this.userPass = {};
 
+
   console.log('this.userPass is: ', this.userPass);
   loggedin = false;
   console.log(loggedin);
+
+
+  this.token = {};
+  this.editUser = {};
 
   this.postEntry = {};
 
@@ -59,7 +64,7 @@ app.controller('mainController', ['$http', function($http) {
       url: this.url + '/users/login',
       data: { user: { username: userPass.username, password: userPass.password }},
     }).then(function(response) {
-      // console.log(response);
+      console.log(response);
       this.user = response.data.user;
       localStorage.setItem('token', JSON.stringify(response.data.token));
     }.bind(this));
@@ -82,6 +87,45 @@ app.controller('mainController', ['$http', function($http) {
         this.users = response.data;
       }
     }.bind(this));
+  }
+
+  this.editUser = function() {
+    $http({
+      url: this.url + '/users',
+      method: 'PUT',
+      headers: {
+      Authorization: 'Bearer ' + JSON.parse(localStorage.getItem('token'))
+      }.then(function(response) {
+      console.log(response);
+      this.user = response.data.user;
+      localStorage.setItem('token', JSON.stringify(response.data.token));
+    }.bind(this))
+    })
+  }
+
+
+  this.updateUser = function() {
+    $http({
+      url: this.url + '/users',
+      method: 'POST',
+      headers: {
+      Authorization: 'Bearer ' + JSON.parse(localStorage.getItem('token'))
+      }.then(function(response) {
+      console.log(response);
+      this.user = response.data.user;
+      localStorage.setItem('token', JSON.stringify(response.data.token));
+    }.bind(this))
+    })
+  }
+
+  //delete user
+  this.deleteUser = function(userPass) {
+    console.log('trying to delete user');
+    // $http({
+    //   url: this.url + '/users',
+    //   method: ''
+    //
+    // })
   }
 
   this.logout = function() {
