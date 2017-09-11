@@ -26,9 +26,9 @@ app.controller('mainController', ['$http', function($http) {
   this.register = false;
   this.userPage = false;
   this.journal = false;
-  // this.destinations = true;
-  // this.books = true;
-  //
+  this.destinations = false;
+  this.books = false;
+
 
   //input requests
   this.showJournalForm = false;
@@ -238,6 +238,7 @@ app.controller('mainController', ['$http', function($http) {
   }
 
   this.savedDest = function(){
+    this.destinations = !this.destinations
     console.log("Saved destinations listed");
   }
 
