@@ -1,16 +1,5 @@
 <!--   User Page ------------------------------------>
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
-    <script type="text/javascript" src="app.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Raleway" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body ng-controller="mainController as ctrl">
-    <div class="container user-page" ng-show="ctrl.userPage">
+    <div class="container user-page" ng-hide="ctrl.userPage">
       <a href="#" ng-click="ctrl.logout()">Log Out</a>
       <!-- {{ ctrl.test }} -->
 
@@ -59,11 +48,21 @@
         <img src="" alt="Profile Photo"/>
         <ul>
           <li><button class="btn btn-default" ng-click="ctrl.userAccount()">Account Details</li>
-          <li><button class="btn btn-default" ng-click="ctrl.journalEntries()">Journal Entries</li>
+          <li><a href="#journal"><button class="btn btn-default" ng-click="ctrl.journalEntries()">Journal Entries</button></a></li>
           <li><button class="btn btn-default" ng-click="ctrl.savedDest()">Saved Destinations</li>
           <li><button class="btn btn-default" ng-click="ctrl.savedBooks()">Saved Books</li>
         </ul>
       </section>
+
+      <!---- Journal Section ---->
+      <section id="journal" ng-include="'./journal.html'"></section>
+
+      <!---- Books Section ---->
+      <section id="book" ng-include="'./book.html'"></section>
+
+      <!---- Destination Section ---->
+      <section id="destination" ng-include="'./dest.html'"></section>
+
     </div>
   </body>
 </html>
