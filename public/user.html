@@ -5,14 +5,21 @@
 <img src="http://www.royalcaribbean.com/connect/wp-content/uploads/2015/01/Caribbean_Vacation-1650x1099.jpg" alt="Royal Caribbean" class="user-img img-responsive"/>
   <!-- {{ ctrl.test }} -->
 
+  <div class="row" style="margin-bottom: 5%" >
+    <section class="col-xs-3 col-xs-offset-3">
+      <img class="profile-pic img-thumbnail img-responsive" src="" alt="Profile Photo"/>
+    </section>
+    <section class="col-xs-6">
+      <h2 class="subtitle">Welcome, {{ctrl.userPass.username}}</h2>
+      <h2 class="subtitle">Where would you like to go today?</h2>
+    </section>
+  </div>
 
-
-
+  <div class="row">
   <!--- Left Side  ---->
 
   <!--- User Options  ---->
   <section class="col-xs-4 col-xs-offset-4">
-    <h2>What would you like to do today?</h2>
     <ul>
 
       <!--- Create a journal entry  ---->
@@ -52,7 +59,6 @@
 
         <!--- Account Info  ---->
         <section class="col-xs-4">
-          <img class="img-responsive" src="" alt="Profile Photo"/>
           <ul>
 
             <!--- Account details for CRUD  ---->
@@ -61,11 +67,13 @@
             <!--- Go to journal entries  ---->
             <li><button class="btn btn-default" ng-click="ctrl.journalEntries()">Journal Entries</button></li>
 
-            <!--- Go to saved destinations  ---->
-            <li><button class="btn btn-default" ng-click="ctrl.savedDest()">Saved Destinations</li>
 
             <!--- Go to saved books  ---->
             <li><button class="btn btn-default" ng-click="ctrl.savedBooks()">Saved Books</li>
+
+
+            <!--- Go to saved destinations  ---->
+            <li><button class="btn btn-default" ng-click="ctrl.savedDest()">Saved Destinations</li>
             </ul>
 
           </section>
