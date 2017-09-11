@@ -24,7 +24,7 @@ app.controller('mainController', ['$http', function($http) {
   this.home = true;
   this.login = false;
   this.register = false;
-  this.userPage = true;
+  this.userPage = false;
   // this.journal = false;
   // this.destinations = true;
   // this.books = true;
@@ -146,7 +146,12 @@ app.controller('mainController', ['$http', function($http) {
     }
   }
   this.showAccount = function(){
-      this.userPage = !this.userPage;
+    console.log('working on showAccount');
+    console.log('loggedin is now: ', loggedin);
+      if(loggedin === true){
+        console.log('loggedin is now: ', loggedin);
+        this.userPage = !this.userPage;
+      }
     }
 
   this.createEntry = function(){
@@ -222,7 +227,7 @@ app.controller('mainController', ['$http', function($http) {
   }
 
   this.closeForm = function(){
-    this.show = false;
+    this.show = true;
   }
 
   //Tiffany:  (routing to show individual html pages?)
@@ -239,5 +244,5 @@ app.controller('mainController', ['$http', function($http) {
   this.savedBooks = function(){
     console.log("Saved books listed");
   }
-
+  
 }]); //end controller
