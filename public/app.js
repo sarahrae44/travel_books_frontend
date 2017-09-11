@@ -6,6 +6,7 @@ app.controller('mainController', ['$http', function($http) {
   this.user = {};
   this.users = [];
   this.userPass = {};
+  this.postEntry = {};
 
   //hidden pages
   this.home = true;
@@ -19,6 +20,8 @@ app.controller('mainController', ['$http', function($http) {
 
   //input requests
   this.showJournalForm = false;
+  this.showBookForm = false;
+  this.showDestForm = false;
 
   this.url = 'http://localhost:3000';
   // this.test = 'hi';
@@ -105,12 +108,68 @@ app.controller('mainController', ['$http', function($http) {
     this.showJournalForm = true;
   }
 
-  this.addBook = function(){
-    console.log("I'm going to add a book");
+  this.journalEntry = function(postEntry) {
+    // this.showJournalForm = true;
+    $http({
+      url: this.url + '/users',
+      method: 'POST',
+      data: { user: { post: postEntry.post }},
+    }).then(function(response) {
+      console.log(response);
+      this.user = response.data.user;
+    })
+    // console.log('Journal entry entered. Boom!' + postEntry.post);
+    // this.postEntry = postEntry;
+    // this.user.post = postEntry;
+    this.showJournalForm = false;
   }
 
-  this.addDest = function(){
-    console.log("I'm going to add a destination");
+  this.createBook = function(){
+    this.showBookForm = true;
+  }
+
+  this.addBook = function(book){
+    $http({
+      url: this.url + '/books',
+      method: 'POST',
+      data: { book: { title: book.title, author: book.author, isbn: book.isbn, genre: book.genre }},
+    }).then(function(response) {
+      console.log(response);
+      this.book = response.data.book;
+    }),
+    $http({
+      url: this.url + '/users',
+      method: 'POST',
+      data: { user: { book: { title: book.title, author: book.author, isbn: book.isbn, genre: book.genre }}},
+    }).then(function(response) {
+      console.log(response);
+      this.user = response.data.user;
+    })
+    this.showBookForm = false;
+  }
+
+  this.createDest = function(){
+    this.showDestForm = true;
+  }
+
+  this.addDest = function(destination){
+    $http({
+      url: this.url + '/destinations',
+      method: 'POST',
+      data: { destination: { name: destination.name, purpose: destination.purpose, transportation: destination.transportation, season: destination.season, climate: destination.climate }},
+    }).then(function(response) {
+      console.log(response);
+      this.destination = response.data.destination;
+    }),
+    $http({
+      url: this.url + '/users',
+      method: 'POST',
+      data: { user: { destination: { name: destination.name, purpose: destination.purpose, transportation: destination.transportation, season: destination.season, climate: destination.climate }}},
+    }).then(function(response) {
+      console.log(response);
+      this.user = response.data.user;
+    })
+    this.showDestForm = false;
   }
 
   this.userAccount = function(){
@@ -134,7 +193,5 @@ app.controller('mainController', ['$http', function($http) {
   this.savedBooks = function(){
     console.log("Saved books listed");
   }
-
-
 
 }]); //end controller
