@@ -7,6 +7,7 @@ app.controller('mainController', ['$http', function($http) {
   console.log('this.user is: ', this.user);
   this.users = [];
   this.userPass = {};
+  this.editDisplay = false;
 
 
   console.log('this.userPass is: ', this.userPass);
