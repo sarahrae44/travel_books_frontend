@@ -25,7 +25,7 @@ app.controller('mainController', ['$http', function($http) {
   this.login = false;
   this.register = false;
   this.userPage = false;
-  // this.journal = false;
+  this.journal = false;
   // this.destinations = true;
   // this.books = true;
   //
@@ -244,5 +244,5 @@ app.controller('mainController', ['$http', function($http) {
   this.savedBooks = function(){
     console.log("Saved books listed");
   }
-  
+
 }]); //end controller
