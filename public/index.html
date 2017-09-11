@@ -17,7 +17,7 @@
 </head>
   <body ng-controller="mainController as ctrl">
     <nav class="navbar navbar-default navbar-static-top">
-        <button type="button" class="btn btn-default navbar-btn" ng-click="ctrl.toggleLogin()" ng-if=ctrl.login ng-click="ctrl.showAccount">Log In</button>
+        <button type="button" class="btn btn-default navbar-btn" ng-click="ctrl.toggleLogin()">Log In</button>
         <button type="button" class="btn btn-default navbar-btn" ng-click="ctrl.toggleRegister()">Register</button>
     </nav>
     <!-- <div class="container" ng-show="ctrl.home"> -->
@@ -30,7 +30,7 @@
     <section id="forms" ng-include="'./forms.html'"></section>
 
     <!---- User Section ---->
-    <section id="user" ng-hide="ctrl.userPage" ng-include="'./user.html'"></section>
+    <section id="user" ng-include="'./user.html'"></section>
 
 
 
