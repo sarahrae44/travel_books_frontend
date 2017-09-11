@@ -25,17 +25,32 @@
         <ul>
           <!-- buttons not looking right -->
 
-
           <li><button class="btn btn-default" ng-click="ctrl.createEntry()">Create a journal entry</li>
 <!-- not sure what the submit would be for this -->
-            <form ng-if="ctrl.showJournalForm" class="ng-modal-overlay ng-modal-dialog">
-              <textarea cols="50" rows="10" ng-model="user.post" placeholder="post"/></textarea>
-              <input type="submit" ng-click="ctrl.closeForm()"/>
+            <form ng-if="ctrl.showJournalForm" class="ng-modal-overlay ng-modal-dialog" ng-submit="ctrl.journalEntry(postEntry)">
+              <textarea cols="50" rows="10" ng-model="postEntry.post" placeholder="post"/></textarea>
+              <input type="submit"/>
             </form>
 
 
-          <li><button class="btn btn-default" ng-click="ctrl.addBook()">Add a book</li>
-          <li><button class="btn btn-default" ng-click="ctrl.addDest()">Add a destination</li>
+          <li><button class="btn btn-default" ng-click="ctrl.createBook()">Add a book</li>
+            <form ng-if="ctrl.showBookForm" class="ng-modal-overlay ng-modal-dialog" ng-submit="ctrl.addBook(book)">
+              <input type="text" ng-model="book.title" placeholder="Title"/>
+              <input type="text" ng-model="book.author" placeholder="Author"/>
+              <input type="text" ng-model="book.isbn" placeholder="ISBN"/>
+              <input type="text" ng-model="book.genre" placeholder="Genre"/>
+              <input type="submit"/>
+            </form>
+
+          <li><button class="btn btn-default" ng-click="ctrl.createDest()">Add a destination</li>
+            <form ng-if="ctrl.showDestForm" class="ng-modal-overlay ng-modal-dialog" ng-submit="ctrl.addDest(destination)">
+              <input type="text" ng-model="destination.name" placeholder="Destination"/>
+              <input type="text" ng-model="destination.purpose" placeholder="Purpose"/>
+              <input type="text" ng-model="destination.transportation" placeholder="Transportation"/>
+              <input type="text" ng-model="destination.season" placeholder="Season"/>
+              <input type="text" ng-model="destination.climate" placeholder="Climate"/>
+              <input type="submit"/>
+            </form>
         </ul>
       </section>
       <section>
