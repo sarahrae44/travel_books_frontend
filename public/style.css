@@ -27,13 +27,22 @@ li {
   margin-left: 10%;
 }
 
+.subtitle {
+  font-size: 4rem;
+}
 
-.main-img {
+.main-img, .user-img {
   width: 100%;
   position: absolute;
   left: 0;
   top: 0;
   z-index: -1;
+}
+
+.profile-pic {
+  width: 140px;
+  height: 140px;
+  margin-left: 30%;
 }
 
 .ng-modal-overlay {
