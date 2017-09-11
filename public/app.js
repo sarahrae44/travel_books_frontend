@@ -239,7 +239,8 @@ app.controller('mainController', ['$http', function($http) {
     this.journal = !this.journal;
     this.home = false;
     this.destinations = false;
-    this.books = false;
+    this.books = false
+    this.userPage = false;
     console.log("Journal entries listed");
   }
 
@@ -248,6 +249,7 @@ app.controller('mainController', ['$http', function($http) {
     this.journal = false;
     this.home = false;
     this.books = false;
+    this.userPage = false;
     console.log("Saved destinations listed");
   }
 
@@ -256,6 +258,7 @@ app.controller('mainController', ['$http', function($http) {
     this.journal = false;
     this.home = false;
     this.destinations = false;
+    this.userPage = false;
     console.log("Saved books listed");
   }
 

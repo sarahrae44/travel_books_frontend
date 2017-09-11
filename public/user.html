@@ -1,10 +1,10 @@
 <!--   User Page ------------------------------------>
     <div class="container user-page" ng-show="ctrl.userPage">
-      <a href="#" ng-click="ctrl.logout()">Log Out</a>
+
       <!-- {{ ctrl.test }} -->
 
       <!-- this works now -->
-      <p>Logged in username: {{ ctrl.userPass.username }} </p>
+      
 
       <!-- end of this works now -->
 
@@ -53,7 +53,7 @@
           <li><button class="btn btn-default" ng-click="ctrl.savedBooks()">Saved Books</li>
         </ul>
       </section>
-
+      </div>
       <!---- Journal Section ---->
       <section id="journal" ng-include="'./journal.html'"></section>
 
@@ -63,7 +63,7 @@
       <!---- Destination Section ---->
       <section id="destination" ng-include="'./dest.html'"></section>
 
-    </div>
+
   </body>
 </html>
 
