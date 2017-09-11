@@ -238,11 +238,12 @@ app.controller('mainController', ['$http', function($http) {
   }
 
   this.savedDest = function(){
-    this.destinations = !this.destinations
+    this.destinations = !this.destinations;
     console.log("Saved destinations listed");
   }
 
   this.savedBooks = function(){
+    this.books = !this.books;
     console.log("Saved books listed");
   }
 
