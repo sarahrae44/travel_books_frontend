@@ -198,7 +198,7 @@ app.controller('mainController', ['$http', function($http) {
     $http({
       url: this.url + '/users',
       method: 'POST',
-      data: { user: { book: { title: book.title, author: book.author, isbn: book.isbn, genre: book.genre }}},
+      data: { user: { book: { title: book.title }}},
     }).then(function(response) {
       console.log(response);
       this.user = response.data.user;
@@ -222,7 +222,7 @@ app.controller('mainController', ['$http', function($http) {
     $http({
       url: this.url + '/users',
       method: 'POST',
-      data: { user: { destination: { name: destination.name, purpose: destination.purpose, transportation: destination.transportation, season: destination.season, climate: destination.climate }}},
+      data: { user: { destination: { name: destination.name }}},
     }).then(function(response) {
       console.log(response);
       this.user = response.data.user;
