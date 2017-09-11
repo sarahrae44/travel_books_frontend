@@ -1,4 +1,4 @@
-@import url('https://getbootstrap.com/dist/css/bootstrap.css');
+/*@import url('https://getbootstrap.com/dist/css/bootstrap.css');*/
 
 /** {
   border: 1px solid hotpink;
@@ -13,10 +13,28 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Amatic SC', cursive;
 }
 
+.navbar-right{
+  margin-right: 5%;
+  font-size: 1.5rem;
+}
+
 li {
   list-style: none;
 }
 
+.title {
+  font-size: 10rem;
+  margin-left: 10%;
+}
+
+
+.main-img {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+}
 
 .ng-modal-overlay {
   /* A dark translucent div that covers the whole screen */
