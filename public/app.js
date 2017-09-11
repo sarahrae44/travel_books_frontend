@@ -90,7 +90,14 @@ app.controller('mainController', ['$http', function($http) {
     }.bind(this));
   }
 
+  this.toggleEdit = function(){
+    console.log('frontend trying to edit and edit button clicked');
+    this.editDisplay = !this.editDisplay;
+    console.log('editdisplay toggle works');
+    }
+
   this.editUser = function() {
+    console.log('edit button pushed');
     $http({
       url: this.url + '/users',
       method: 'PUT',
@@ -245,5 +252,5 @@ app.controller('mainController', ['$http', function($http) {
   this.savedBooks = function(){
     console.log("Saved books listed");
   }
-  
+
 }]); //end controller

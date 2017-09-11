@@ -44,7 +44,7 @@
 </div> -->
 
 <!---- Edit Button ---->
-<button class="btn btn-primary" ng-click="user.toggleEdit()">Edit Profile</button>
+<button class="btn btn-primary" ng-click="ctrl.toggleEdit()">Edit Profile</button>
 
 <!-- Edit user Form -->
 
@@ -59,20 +59,20 @@
              <fieldset>
                <div class="form-group">
                  Name
-                 <input class="form-control" type="text" placeholder="Username" ng-model="user.editUser.username">
+                 <input class="form-control" type="text" placeholder="Username" ng-model="ctrl.editUser.username">
                </div>
 
                <div class="form-group">
                  Password
-                 <input class="form-control" type="password" ng-model="user.editUser.password" placeholder="Password"/>
+                 <input class="form-control" type="password" ng-model="ctrl.editUser.password" placeholder="Password"/>
                </div>
 
                <div class="form-group">
                  Image Link
-                 <input class="form-control" type="text" placeholder="Profile Picture" ng-model="user.editUser.img">
+                 <input class="form-control" type="text" placeholder="Profile Picture" ng-model="ctrl.editUser.img">
                </div>
 
-               <button type="submit" ng-click="user.updateUser(userPass)">Confirm</button>
+               <button type="submit" ng-click="ctrl.updateUser(userPass)">Confirm</button>
              </fieldset>
             </form>
           </div>
