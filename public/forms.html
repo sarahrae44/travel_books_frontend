@@ -1,5 +1,6 @@
 <!--  Register Modal  ----------------------------------->
 <body ng-controller="mainController as ctrl">
+<div class="register" ng-show="ctrl.registerModal">
 <h5>Register</h5>
 <form ng-submit="ctrl.CreateUser(userPass)">
       <input type="text" ng-model="userPass.username" placeholder="Username"/>
@@ -11,10 +12,10 @@
 
       <input type="submit"/>
     </form>
-
+</div>
 
 <!--  Login Form -->
-
+<div class="login" ng-show="ctrl.loginModal">
 <h5>Log In</h5>
 
 
@@ -25,15 +26,14 @@
 
   <input ng-click="ctrl.showAccount()" type="submit"/>
 </form>
+</div>
 
-<!--  Logout Form -->
-<a href="#" ng-click="ctrl.logout()">Log Out</a>
 
 
 <!-- to see who is logged in (admin) for production, not for stage 1 of development:  -->
 
-{{ ctrl.test }}
-<p>Logged in username: {{ ctrl.user.username }} </p>
+<!-- {{ ctrl.test }}
+<p>Logged in username: {{ ctrl.user.username }} </p> -->
 
 <!-- <h4 ng-click="ctrl.getUsers()">Click to see secret stuff</h4>
 
