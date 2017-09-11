@@ -22,13 +22,13 @@ app.controller('mainController', ['$http', function($http) {
 
   //hidden pages
   this.home = true;
-  this.login = false;
-  this.register = false;
+  this.loginModal = false;
+  this.registerModal = false;
   this.userPage = false;
   this.journal = false;
-  // this.destinations = true;
-  // this.books = true;
-  //
+  this.destinations = false;
+  this.books = false;
+
 
   //input requests
   this.showJournalForm = false;
@@ -134,13 +134,13 @@ app.controller('mainController', ['$http', function($http) {
   }
 
   this.toggleLogin = function(){
-    this.login = !this.login;
+    this.loginModal = !this.loginModal;
     if(this.register === true){
       this.register = false;
     }
   }
   this.toggleRegister = function(){
-    this.register = !this.register;
+    this.registerModal = !this.registerModal;
     if(this.login === false){
       this.login = true;
     }
@@ -151,7 +151,13 @@ app.controller('mainController', ['$http', function($http) {
       if(loggedin === true){
         console.log('loggedin is now: ', loggedin);
         this.userPage = !this.userPage;
+        this.journal = false;
+        this.home = false;
+        this.destinations = false;
+        this.books = false;
+        console.log("Account details");
       }
+
     }
 
   this.createEntry = function(){
@@ -222,26 +228,34 @@ app.controller('mainController', ['$http', function($http) {
     this.showDestForm = false;
   }
 
-  this.userAccount = function(){
-    console.log("Account details");
-  }
 
   this.closeForm = function(){
     this.show = true;
   }
 
-  //Tiffany:  (routing to show individual html pages?)
+  //Toggle pages on button click
 
   this.journalEntries = function(){
     this.journal = !this.journal;
+    this.home = false;
+    this.destinations = false;
+    this.books = false;
     console.log("Journal entries listed");
   }
 
   this.savedDest = function(){
+    this.destinations = !this.destinations;
+    this.journal = false;
+    this.home = false;
+    this.books = false;
     console.log("Saved destinations listed");
   }
 
   this.savedBooks = function(){
+    this.books = !this.books;
+    this.journal = false;
+    this.home = false;
+    this.destinations = false;
     console.log("Saved books listed");
   }
 
