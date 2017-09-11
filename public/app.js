@@ -176,6 +176,12 @@ app.controller('mainController', ['$http', function($http) {
     console.log("Account details");
   }
 
+  this.closeForm = function(){
+    this.show = false;
+  }
+
+  //Tiffany:  (routing to show individual html pages?)
+
   this.journalEntries = function(){
     console.log("Journal entries listed");
   }
