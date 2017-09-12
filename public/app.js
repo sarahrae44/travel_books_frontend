@@ -17,7 +17,7 @@ app.controller('mainController', ['$http', function($http) {
 
   this.token = {};
   this.editUser = {};
-
+  this.updatedUser = {};
   this.postEntry = {};
 
   this.userBooks = [];
@@ -124,13 +124,13 @@ app.controller('mainController', ['$http', function($http) {
 
   this.updateUser = function() {
     $http({
-      url: this.url + '/user',
+      url: this.url + '/users/' + this.user,
       method: 'POST',
       headers: {
       Authorization: 'Bearer ' + JSON.parse(localStorage.getItem('token'))
       }.then(function(response) {
       console.log(response);
-      this.user = response.data.user;
+      this.updatedUser = response.data.user;
       localStorage.setItem('token', JSON.stringify(response.data.token));
     }.bind(this))
     })
