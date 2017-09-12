@@ -318,6 +318,7 @@ app.controller('mainController', ['$http', function($http) {
     this.account = false;
     this.loginModal = false;
     this.registerModal = false;
+    this.showBooks();
     console.log("Saved books listed");
   }
 
@@ -357,6 +358,6 @@ app.controller('mainController', ['$http', function($http) {
   })
 };
 
-this.showBooks();
+
 
 }]); //end controller
