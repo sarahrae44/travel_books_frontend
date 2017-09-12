@@ -141,7 +141,7 @@ app.controller('mainController', ['$http', function($http) {
     console.log('trying to delete user');
     $http({
       method: 'DELETE',
-      url: this.url + '/users/' + this.user
+      url: this.url + '/users/' + this.user.id
     }).then(function(response) {
       console.log(response);
       this.logout();
