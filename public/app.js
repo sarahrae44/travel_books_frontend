@@ -61,7 +61,7 @@ app.controller('mainController', ['$http', function($http) {
     console.log('userPass.username is: ', userPass.username);
     console.log('userPass.password is: ', userPass.password);
     $http({
-      method: 'GET',
+      method: 'POST',
       url: this.url + '/users/login',
       data: { user: { username: userPass.username, password: userPass.password }},
     }).then(function(response) {
@@ -133,12 +133,12 @@ app.controller('mainController', ['$http', function($http) {
     console.log('trying to delete user');
     $http({
       method: 'DELETE',
-      url: this.url + '/users/' + this.user,
-      data: { user: { username: userPass.username, password: userPass.password }},
+      url: this.url + '/users/' + this.user
+      // data: { user: { username: userPass.username, password: userPass.password }},
     }).then(function(response) {
-      console.log(response);
-      this.user = response.data.user;
-      localStorage.setItem('token', JSON.stringify(response.data.token));
+      // console.log(response);
+      // this.user = response.data.user;
+      // localStorage.setItem('token', JSON.stringify(response.data.token));
     }.bind(this));
   }
 
