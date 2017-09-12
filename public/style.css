@@ -31,7 +31,8 @@ li {
   font-size: 4rem;
 }
 
-.main-img, .user-img {
+/*background images*/
+.main-img, .user-img, .journal-img {
   width: 100%;
   position: absolute;
   left: 0;
@@ -45,6 +46,7 @@ li {
   margin-left: 30%;
 }
 
+/*modals*/
 .ng-modal-overlay {
   /* A dark translucent div that covers the whole screen */
   position:absolute;
@@ -88,4 +90,13 @@ li {
   display: inline-block;
   font-weight: bold;
   font-family: 'arial', 'sans-serif';
+}
+
+
+/*journal page*/
+.journal-container {
+  width: 80%;
+  height: 100%;
+  margin: auto;
+  background-color: rgba(255,255,255, 0.5);
 }

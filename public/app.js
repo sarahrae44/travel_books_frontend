@@ -20,6 +20,7 @@ app.controller('mainController', ['$http', function($http) {
 
   this.postEntry = {};
 
+  this.userBooks = [];
 
   //hidden pages
   this.home = true;
@@ -29,6 +30,7 @@ app.controller('mainController', ['$http', function($http) {
   this.journal = false;
   this.destinations = false;
   this.books = false;
+  this.account = false;
 
 
   //input requests
@@ -177,7 +179,7 @@ app.controller('mainController', ['$http', function($http) {
         this.home = false;
         this.destinations = false;
         this.books = false;
-        console.log("Account details");
+        console.log("User Page");
       }
 
     }
@@ -215,7 +217,9 @@ app.controller('mainController', ['$http', function($http) {
       data: { book: { title: book.title, author: book.author, isbn: book.isbn, genre: book.genre, user_id: this.user.id }},
     }).then(function(response) {
       console.log(response);
-      this.book = response.data.book;
+      this.book = response.data;
+      console.log(this.book);
+
     }),
     // $http({
     //   url: this.url + '/users/:user_id/books',
@@ -227,6 +231,7 @@ app.controller('mainController', ['$http', function($http) {
     // })
     this.showBookForm = false;
   }
+
 
   this.createDest = function(){
     this.showDestForm = true;
@@ -285,5 +290,39 @@ app.controller('mainController', ['$http', function($http) {
     this.userPage = false;
     console.log("Saved books listed");
   }
+
+  this.getAccount = function(){
+    this.account = !this.account;
+    this.books = false;
+    this.journal = false;
+    this.home = false;
+    this.destinations = false;
+    this.userPage = false;
+    console.log("Account details");
+  }
+
+
+  /////////////////////////////////////////
+
+
+  //add to books to users
+  this.addToBooks = function(user_id, book_id){
+    $http({
+      method: "POST",
+      url: '/books/users',
+      data: {
+        user_id: user_id,
+        book_id: book_id
+      }
+    }).then(function(response){
+      if (response.data){
+      console.log("the book has been added to user's books");
+    } else {
+      console.log("keep working on books array");
+    }
+  }).then(function(error){
+    console.log(error);
+  })
+};
 
 }]); //end controller

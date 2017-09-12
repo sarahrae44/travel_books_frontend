@@ -5,7 +5,7 @@
 <img src="http://www.royalcaribbean.com/connect/wp-content/uploads/2015/01/Caribbean_Vacation-1650x1099.jpg" alt="Royal Caribbean" class="user-img img-responsive"/>
   <!-- {{ ctrl.test }} -->
 
-  <div class="row" style="margin-bottom: 5%" >
+  <div class="row" style="margin-bottom: 2rem" >
     <section class="col-xs-3 col-xs-offset-3">
       <img class="profile-pic img-thumbnail img-responsive" src="" alt="Profile Photo"/>
     </section>
@@ -62,35 +62,22 @@
           <ul>
 
             <!--- Account details for CRUD  ---->
-            <li><button class="btn btn-default" ng-click="ctrl.userAccount()">Account Details</li>
+            <li class="btn btn-default" ng-click="ctrl.getAccount()"><span class="glyphicon glyphicon-cog"></span></li>
 
             <!--- Go to journal entries  ---->
-            <li><button class="btn btn-default" ng-click="ctrl.journalEntries()">Journal Entries</button></li>
+            <li class="btn btn-default" ng-click="ctrl.journalEntries()"><span class="glyphicon glyphicon-pencil"></span></li>
 
 
             <!--- Go to saved books  ---->
-            <li><button class="btn btn-default" ng-click="ctrl.savedBooks()">Saved Books</li>
+            <li class="btn btn-default" ng-click="ctrl.savedBooks()"><span class="glyphicon glyphicon-book"></span></li>
 
 
             <!--- Go to saved destinations  ---->
-            <li><button class="btn btn-default" ng-click="ctrl.savedDest()">Saved Destinations</li>
+            <li class="btn btn-default" ng-click="ctrl.savedDest()"><span class="glyphicon glyphicon-globe"></span></li>
             </ul>
 
           </section>
           </div>
-
-
-
-
-    <!---- Journal Section ---->
-    <section id="journal" ng-include="'./journal.html'"></section>
-
-    <!---- Books Section ---->
-    <section id="book" ng-include="'./book.html'"></section>
-
-    <!---- Destination Section ---->
-    <section id="destination" ng-include="'./dest.html'"></section>
-
 
   </body>
 </html>

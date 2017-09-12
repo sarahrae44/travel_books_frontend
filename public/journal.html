@@ -1,9 +1,11 @@
 <!--  Journal Page ------------------------------------>
-
-<div class="container journal" ng-show="ctrl.journal">
-  <h2>My Journal</h2>
-  <div class="entry">
-    <!-- add ng repeat of entries -->
+<div class="journal" ng-show="ctrl.journal">
+  <img class="journal-img img-responsive" src="https://i2.wp.com/storyv.com/wp-content/uploads/2017/03/why-start-a-travel-blog-5.jpg?fit=1200%2C784&ssl=1" alt="Travel Blog"/>
+  <div class="container journal-container">
+    <h2>My Journal</h2>
+    <div class="entry" ng-repeat="post in ctrl.userPass.posts">
+      {{post}}
+    </div>
   </div>
 </div>
 
