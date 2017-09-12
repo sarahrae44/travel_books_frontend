@@ -164,6 +164,7 @@ app.controller('mainController', ['$http', function($http) {
     if(this.registerModal === true){
       this.registerModal = false;
     }
+    this.closeForm();
   }
 
   this.toggleRegister = function(){
@@ -171,6 +172,7 @@ app.controller('mainController', ['$http', function($http) {
     if(this.loginModal === true){
       this.loginModal = false;
     }
+    this.closeForm();
   }
 
   this.showAccount = function(){
@@ -303,17 +305,17 @@ app.controller('mainController', ['$http', function($http) {
 
   //Toggle pages on button click
 
-  this.journalEntries = function(){
-    this.journal = !this.journal;
-    this.home = false;
-    this.destinations = false;
-    this.books = false
-    this.userPage = false;
-    this.account = false;
-    this.loginModal = false;
-    this.registerModal = false;
-    console.log("Journal entries listed");
-  }
+  // this.journalEntries = function(){
+  //   this.journal = !this.journal;
+  //   this.home = false;
+  //   this.destinations = false;
+  //   this.books = false
+  //   this.userPage = false;
+  //   this.account = false;
+  //   this.loginModal = false;
+  //   this.registerModal = false;
+  //   console.log("Journal entries listed");
+  // }
 
   this.savedDest = function(){
     this.destinations = !this.destinations;
