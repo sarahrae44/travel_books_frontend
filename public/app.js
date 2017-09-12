@@ -142,8 +142,14 @@ app.controller('mainController', ['$http', function($http) {
     $http({
       method: 'DELETE',
       url: this.url + '/users/' + this.user
+      // #dan said I dont need this - so destroying session based token not necessary since it can't be retrieved after user deleted?
+      //
+      // Authorization: 'Bearer ' + JSON.parse(localStorage.getItem('token'))
     }).then(function(response) {
       console.log(response);
+      console.log('how to delete user in back end');
+      this.user = null;
+      localStorage.clear(user.userPass.delete);
       this.logout();
     }.bind(this));
   }
