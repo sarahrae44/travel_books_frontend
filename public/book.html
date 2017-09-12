@@ -3,10 +3,12 @@
   <img class="main-img img-responsive" src="http://reformedforum.org/wp-content/blogs.dir/1/files/2016/06/book.jpg" alt="books"/>
   <div class="container main-container">
     <h2>My Library</h2>
-    <div class="book-list" ng-show="ctrl.bookList">
-      <!-- {{book.title}} -->
+    <ul class="book-list" ng-repeat="book in ctrl.bookList">
+      {{book.title}}
+      {{book.author}}
+      {{book.genre}}
       {{ctrl.bookList}}
-    </div>
+
   </div>
 </div>
 
