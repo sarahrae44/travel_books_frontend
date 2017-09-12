@@ -136,25 +136,17 @@ app.controller('mainController', ['$http', function($http) {
     })
   }
 
-
-//this delete function does not work!!!! by Jen
   //delete user
-//   this.deleteUser = function(userPass) {
-//     console.log('trying to delete user');
-//     $http({
-//       url: this.url + '/users/' + this.user.id,
-//       method: 'DELETE',
-//       // #dan said I dont need this - so destroying session based token not necessary since it can't be retrieved after user deleted?
-//       headers: {
-//       Authorization: 'Bearer ' + JSON.parse(localStorage.getItem('token'))
-//     }.then(function(response) {
-//       console.log(response);
-//       console.log('how to delete user in back end');
-//       this.logout();
-//     }.bind(this))
-//   })
-// }
-
+  this.deleteUser = function(userPass) {
+    console.log('trying to delete user');
+    $http({
+      method: 'DELETE',
+      url: this.url + '/users/' + this.user.id
+    }).then(function(response) {
+      console.log(response);
+      this.logout();
+    }.bind(this));
+  }
 
 
 //end Jen section
