@@ -103,20 +103,23 @@ app.controller('mainController', ['$http', function($http) {
     console.log('editdisplay toggle works');
     }
 
-  // this.editUser = function() {
-  //   console.log('edit button pushed');
-  //   $http({
-  //     url: this.url + '/users/' + this.user
-  //     method: 'PUT',
-  //     headers: {
-  //     Authorization: 'Bearer ' + JSON.parse(localStorage.getItem('token'))
-  //     }.then(function(response) {
-  //     console.log(response);
-  //     this.user = response.data.user;
-  //     localStorage.setItem('token', JSON.stringify(response.data.token));
-  //   }.bind(this))
-  //   })
-  // }
+  this.editUser = function() {
+    console.log('edit button pushed');
+    $http({
+      url: this.url + '/user',
+      method: 'PUT',
+      headers: {
+      Authorization: 'Bearer ' + JSON.parse(localStorage.getItem('token'))
+      }.then(function(response) {
+      console.log(response);
+      console.log("==================");
+      console.log('this is this.user for edit', this.user);
+      this.user = response.data;
+      console.log("==================");
+      localStorage.setItem('token', JSON.stringify(response.data.token));
+    }.bind(this))
+    })
+  }
 
 
   this.updateUser = function() {
@@ -139,11 +142,9 @@ app.controller('mainController', ['$http', function($http) {
     $http({
       method: 'DELETE',
       url: this.url + '/users/' + this.user
-      // data: { user: { username: userPass.username, password: userPass.password }},
     }).then(function(response) {
       console.log(response);
-      // this.user = response.data.user;
-      // localStorage.setItem('token', JSON.stringify(response.data.token));
+      this.logout();
     }.bind(this));
   }
 
@@ -223,6 +224,7 @@ app.controller('mainController', ['$http', function($http) {
     }).then(function(response) {
       console.log(response);
       this.book = response.data;
+      console.log("==================");
       console.log(this.book);
 
     }),
@@ -236,6 +238,20 @@ app.controller('mainController', ['$http', function($http) {
     // })
     this.showBookForm = false;
   }
+
+  this.showBooks = function(){
+    $http({
+      url: this.url + '/users/:user_id/books',
+      method: 'GET',
+    }).then(function(response) {
+      console.log(response);
+      this.book = response.data;
+      console.log("==================");
+      console.log(this.book);
+    })
+  }
+
+
 
 
   this.createDest = function(){
@@ -341,5 +357,6 @@ app.controller('mainController', ['$http', function($http) {
   })
 };
 
+this.showBooks();
 
 }]); //end controller
