@@ -186,21 +186,21 @@ app.controller('mainController', ['$http', function($http) {
 
   this.addBook = function(book){
     $http({
-      url: this.url + '/books',
+      url: this.url + '/users/:user_id/books',
       method: 'POST',
-      data: { book: { title: book.title, author: book.author, isbn: book.isbn, genre: book.genre }},
+      data: { book: { title: book.title, author: book.author, isbn: book.isbn, genre: book.genre, user_id: this.user.id }},
     }).then(function(response) {
       console.log(response);
       this.book = response.data.book;
     }),
-    $http({
-      url: this.url + '/users',
-      method: 'POST',
-      data: { user: { book: { title: book.title }}},
-    }).then(function(response) {
-      console.log(response);
-      this.user = response.data.user;
-    })
+    // $http({
+    //   url: this.url + '/users/:user_id/books',
+    //   method: 'POST',
+    //   data: { user: { book: { title: book.title }}},
+    // }).then(function(response) {
+    //   console.log(response);
+    //   this.user = response.data.user;
+    // })
     this.showBookForm = false;
   }
 
@@ -210,21 +210,21 @@ app.controller('mainController', ['$http', function($http) {
 
   this.addDest = function(destination){
     $http({
-      url: this.url + '/destinations',
+      url: this.url + '/users/:user_id/destinations',
       method: 'POST',
-      data: { destination: { name: destination.name, purpose: destination.purpose, transportation: destination.transportation, season: destination.season, climate: destination.climate }},
+      data: { destination: { name: destination.name, purpose: destination.purpose, transportation: destination.transportation, season: destination.season, climate: destination.climate, user_id: this.user.id }},
     }).then(function(response) {
       console.log(response);
       this.destination = response.data.destination;
     }),
-    $http({
-      url: this.url + '/users',
-      method: 'POST',
-      data: { user: { destination: { name: destination.name }}},
-    }).then(function(response) {
-      console.log(response);
-      this.user = response.data.user;
-    })
+    // $http({
+    //   url: this.url + '/users',
+    //   method: 'POST',
+    //   data: { user: { destination: { name: destination.name }}},
+    // }).then(function(response) {
+    //   console.log(response);
+    //   this.user = response.data.user;
+    // })
     this.showDestForm = false;
   }
 
