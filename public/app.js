@@ -141,7 +141,7 @@ app.controller('mainController', ['$http', function($http) {
       url: this.url + '/users/' + this.user
       // data: { user: { username: userPass.username, password: userPass.password }},
     }).then(function(response) {
-      // console.log(response);
+      console.log(response);
       // this.user = response.data.user;
       // localStorage.setItem('token', JSON.stringify(response.data.token));
     }.bind(this));
@@ -157,28 +157,33 @@ app.controller('mainController', ['$http', function($http) {
     location.reload();
   }
 
+
+
   this.toggleLogin = function(){
-    this.loginModal = !this.loginModal;
-    if(this.registerModal === true){
-      this.registerModal = false;
-    }
-  }
-  this.toggleRegister = function(){
-    this.registerModal = !this.registerModal;
-    if(this.loginModal === false){
+    if(this.registerModal === false){
       this.loginModal = true;
     }
   }
+
+  this.toggleRegister = function(){
+    if(this.loginModal === false){
+      this.registerModal = true;
+    }
+  }
+
   this.showAccount = function(){
     console.log('working on showAccount');
     console.log('loggedin is now: ', this.loggedin);
       if(this.loggedin === true){
         console.log('loggedin is now: ', this.loggedin);
         this.userPage = !this.userPage;
+        this.account = false;
         this.journal = false;
         this.home = false;
         this.destinations = false;
         this.books = false;
+        this.loginModal = false;
+        this.registerModal = false;
         console.log("User Page");
       }
 
@@ -270,6 +275,9 @@ app.controller('mainController', ['$http', function($http) {
     this.destinations = false;
     this.books = false
     this.userPage = false;
+    this.account = false;
+    this.loginModal = false;
+    this.registerModal = false;
     console.log("Journal entries listed");
   }
 
@@ -279,6 +287,9 @@ app.controller('mainController', ['$http', function($http) {
     this.home = false;
     this.books = false;
     this.userPage = false;
+    this.account = false;
+    this.loginModal = false;
+    this.registerModal = false;
     console.log("Saved destinations listed");
   }
 
@@ -288,6 +299,9 @@ app.controller('mainController', ['$http', function($http) {
     this.home = false;
     this.destinations = false;
     this.userPage = false;
+    this.account = false;
+    this.loginModal = false;
+    this.registerModal = false;
     console.log("Saved books listed");
   }
 
@@ -298,6 +312,8 @@ app.controller('mainController', ['$http', function($http) {
     this.home = false;
     this.destinations = false;
     this.userPage = false;
+    this.loginModal = false;
+    this.registerModal = false;
     console.log("Account details");
   }
 
@@ -324,5 +340,6 @@ app.controller('mainController', ['$http', function($http) {
     console.log(error);
   })
 };
+
 
 }]); //end controller
