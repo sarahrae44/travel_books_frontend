@@ -17,7 +17,7 @@ app.controller('mainController', ['$http', function($http) {
 
   this.token = {};
   this.editUser = {};
-
+  this.updatedUser = {};
   this.postEntry = {};
 
 
@@ -101,31 +101,31 @@ app.controller('mainController', ['$http', function($http) {
     console.log('editdisplay toggle works');
     }
 
-  this.editUser = function() {
-    console.log('edit button pushed');
-    $http({
-      url: this.url + '/user',
-      method: 'PUT',
-      headers: {
-      Authorization: 'Bearer ' + JSON.parse(localStorage.getItem('token'))
-      }.then(function(response) {
-      console.log(response);
-      this.user = response.data.user;
-      localStorage.setItem('token', JSON.stringify(response.data.token));
-    }.bind(this))
-    })
-  }
+  // this.editUser = function() {
+  //   console.log('edit button pushed');
+  //   $http({
+  //     url: this.url + '/users/' + this.user
+  //     method: 'PUT',
+  //     headers: {
+  //     Authorization: 'Bearer ' + JSON.parse(localStorage.getItem('token'))
+  //     }.then(function(response) {
+  //     console.log(response);
+  //     this.user = response.data.user;
+  //     localStorage.setItem('token', JSON.stringify(response.data.token));
+  //   }.bind(this))
+  //   })
+  // }
 
 
   this.updateUser = function() {
     $http({
-      url: this.url + '/user',
+      url: this.url + '/users/' + this.user,
       method: 'POST',
       headers: {
       Authorization: 'Bearer ' + JSON.parse(localStorage.getItem('token'))
       }.then(function(response) {
       console.log(response);
-      this.user = response.data.user;
+      this.updatedUser = response.data.user;
       localStorage.setItem('token', JSON.stringify(response.data.token));
     }.bind(this))
     })
