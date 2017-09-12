@@ -27,8 +27,12 @@ li {
   margin-left: 10%;
 }
 
+.subtitle {
+  font-size: 4rem;
+}
 
-.main-img {
+/*background images*/
+.main-img, .user-img, .journal-img {
   width: 100%;
   position: absolute;
   left: 0;
@@ -36,6 +40,13 @@ li {
   z-index: -1;
 }
 
+.profile-pic {
+  width: 140px;
+  height: 140px;
+  margin-left: 30%;
+}
+
+/*modals*/
 .ng-modal-overlay {
   /* A dark translucent div that covers the whole screen */
   position:absolute;
@@ -79,4 +90,14 @@ li {
   display: inline-block;
   font-weight: bold;
   font-family: 'arial', 'sans-serif';
+}
+
+
+/*pages*/
+.main-container {
+  width: 80%;
+  height: 100%;
+  min-height: 500px;
+  margin: auto;
+  background-color: rgba(255,255,255, 0.85);
 }

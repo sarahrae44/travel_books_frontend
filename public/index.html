@@ -24,11 +24,12 @@
 </head>
 <body ng-controller="mainController as ctrl">
   <section id="nav" ng-include="'./nav.html'"></section>
+
   <div ng-show="ctrl.home">
-    <h1 class="title">Travel Books</h1>
+  <h1 class="title">Travel Books</h1>
 
 
-    <img class="main-img" src="http://i.huffpost.com/gen/3024620/images/o-474868512-facebook.jpg" alt="..."/>
+    <img class="main-img img-responsive" src="http://i.huffpost.com/gen/3024620/images/o-474868512-facebook.jpg" alt="..."/>
   </div>
 
 
@@ -40,8 +41,17 @@
     <!---- User Section ---->
     <section id="user" ng-include="'./user.html'"></section>
 
+    <!---- Account Section ---->
+    <section id="account" ng-include="'./account.html'"></section>
 
+    <!---- Journal Section ---->
+    <section id="journal" ng-include="'./journal.html'"></section>
 
+    <!---- Books Section ---->
+    <section id="book" ng-include="'./book.html'"></section>
+
+    <!---- Destination Section ---->
+    <section id="destination" ng-include="'./dest.html'"></section>
 
 
   </body>
