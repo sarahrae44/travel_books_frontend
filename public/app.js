@@ -3,6 +3,7 @@ console.log('app.js is working');
 const app = angular.module('auth_app', []);
 
 app.controller('mainController', ['$http', function($http) {
+  const controller = this;
   this.user = {};
   console.log('this.user is: ', this.user);
   this.users = [];
@@ -246,9 +247,9 @@ app.controller('mainController', ['$http', function($http) {
       method: 'GET',
     }).then(function(response) {
       console.log(response);
-      this.bookList = response.data;
+      controller.bookList = response.data;
       console.log("==================");
-      console.log("this is this.bookList, which is response.data", this.bookList);
+      console.log("this is this.bookList, which is response.data", controller.bookList);
       console.log("==================");
 
     })
@@ -280,6 +281,20 @@ app.controller('mainController', ['$http', function($http) {
     // })
     this.showDestForm = false;
   }
+
+  this.getDestinations = function(){
+    $http({
+      url: this.url + '/users/:user_id/destinations',
+      method: 'GET',
+    }).then(function(response) {
+      console.log(response);
+      controller.destList = response.data;
+      console.log("==================");
+      console.log("this is this.destList, which is response.data", controller.destList);
+      console.log("==================");
+
+    })
+  }
 //Sarah end section
 
   this.closeForm = function(){
@@ -309,6 +324,7 @@ app.controller('mainController', ['$http', function($http) {
     this.account = false;
     this.loginModal = false;
     this.registerModal = false;
+    this.getDestinations();
     console.log("Saved destinations listed");
   }
 

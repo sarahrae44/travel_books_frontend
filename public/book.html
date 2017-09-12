@@ -3,12 +3,9 @@
   <img class="main-img img-responsive" src="http://reformedforum.org/wp-content/blogs.dir/1/files/2016/06/book.jpg" alt="books"/>
   <div class="container main-container">
     <h2>My Library</h2>
-    <ul class="book-list" ng-repeat="book in ctrl.bookList">
+    <div class="book-list" ng-repeat="book in ctrl.bookList track by $index">
       {{book.title}}
-      {{book.author}}
-      {{book.genre}}
-      {{ctrl.bookList}}
-
+    </div>
   </div>
 </div>
 
