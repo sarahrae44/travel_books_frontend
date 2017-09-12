@@ -106,7 +106,7 @@ app.controller('mainController', ['$http', function($http) {
   this.editUser = function() {
     console.log('edit button pushed');
     $http({
-      url: this.url + '/user',
+      url: this.url + '/users/' + this.user.id,
       method: 'PUT',
       headers: {
       Authorization: 'Bearer ' + JSON.parse(localStorage.getItem('token'))
@@ -124,7 +124,7 @@ app.controller('mainController', ['$http', function($http) {
 
   this.updateUser = function() {
     $http({
-      url: this.url + '/users/' + this.user,
+      url: this.url + '/users/' + this.user.id,
       method: 'POST',
       headers: {
       Authorization: 'Bearer ' + JSON.parse(localStorage.getItem('token'))
@@ -149,7 +149,7 @@ app.controller('mainController', ['$http', function($http) {
   }
 
 
-//end Jen section
+
 
   this.logout = function() {
     localStorage.clear('token');
