@@ -7,6 +7,7 @@ app.controller('mainController', ['$http', function($http) {
   console.log('this.user is: ', this.user);
   this.users = [];
   this.userPass = {};
+  this.editDisplay = false;
 
 
   console.log('this.userPass is: ', this.userPass);
@@ -92,9 +93,18 @@ app.controller('mainController', ['$http', function($http) {
     }.bind(this));
   }
 
+
+//Jen section:
+  this.toggleEdit = function(){
+    console.log('frontend trying to edit and edit button clicked');
+    this.editDisplay = !this.editDisplay;
+    console.log('editdisplay toggle works');
+    }
+
   this.editUser = function() {
+    console.log('edit button pushed');
     $http({
-      url: this.url + '/users',
+      url: this.url + '/user',
       method: 'PUT',
       headers: {
       Authorization: 'Bearer ' + JSON.parse(localStorage.getItem('token'))
@@ -109,7 +119,7 @@ app.controller('mainController', ['$http', function($http) {
 
   this.updateUser = function() {
     $http({
-      url: this.url + '/users',
+      url: this.url + '/user',
       method: 'POST',
       headers: {
       Authorization: 'Bearer ' + JSON.parse(localStorage.getItem('token'))
@@ -124,12 +134,21 @@ app.controller('mainController', ['$http', function($http) {
   //delete user
   this.deleteUser = function(userPass) {
     console.log('trying to delete user');
-    // $http({
-    //   url: this.url + '/users',
-    //   method: ''
-    //
-    // })
+    $http({
+      method: 'DELETE',
+      url: this.url + '/users/' + this.user
+      // data: { user: { username: userPass.username, password: userPass.password }},
+    }).then(function(response) {
+      // console.log(response);
+      // this.user = response.data.user;
+      // localStorage.setItem('token', JSON.stringify(response.data.token));
+    }.bind(this));
   }
+
+  //   })
+  // }
+
+//end Jen section
 
   this.logout = function() {
     localStorage.clear('token');
@@ -138,14 +157,14 @@ app.controller('mainController', ['$http', function($http) {
 
   this.toggleLogin = function(){
     this.loginModal = !this.loginModal;
-    if(this.register === true){
-      this.register = false;
+    if(this.registerModal === true){
+      this.registerModal = false;
     }
   }
   this.toggleRegister = function(){
     this.registerModal = !this.registerModal;
-    if(this.login === false){
-      this.login = true;
+    if(this.loginModal === false){
+      this.loginModal = true;
     }
   }
   this.showAccount = function(){
@@ -163,6 +182,8 @@ app.controller('mainController', ['$http', function($http) {
 
     }
 
+
+//Sarah section
   this.createEntry = function(){
     this.showJournalForm = true;
   }
@@ -230,7 +251,7 @@ app.controller('mainController', ['$http', function($http) {
     // })
     this.showDestForm = false;
   }
-
+//Sarah end section
 
   this.closeForm = function(){
     this.show = true;
