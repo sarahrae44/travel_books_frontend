@@ -161,14 +161,16 @@ app.controller('mainController', ['$http', function($http) {
 
 
   this.toggleLogin = function(){
-    if(this.registerModal === false){
-      this.loginModal = true;
+    this.loginModal = !this.loginModal
+    if(this.registerModal === true){
+      this.registerModal = false;
     }
   }
 
   this.toggleRegister = function(){
-    if(this.loginModal === false){
-      this.registerModal = true;
+    this.registerModal = !this.registerModal
+    if(this.loginModal === true){
+      this.loginModal = false;
     }
   }
 
