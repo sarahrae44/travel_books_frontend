@@ -3,6 +3,7 @@ console.log('app.js is working');
 const app = angular.module('auth_app', []);
 
 app.controller('mainController', ['$http', function($http) {
+  const controller = this;
   this.user = {};
   console.log('this.user is: ', this.user);
   this.users = [];
@@ -20,7 +21,7 @@ app.controller('mainController', ['$http', function($http) {
   this.updatedUser = {};
   this.postEntry = {};
 
-  this.userBooks = [];
+
 
   //hidden pages
   this.home = true;
@@ -163,6 +164,7 @@ app.controller('mainController', ['$http', function($http) {
     if(this.registerModal === true){
       this.registerModal = false;
     }
+    this.closeForm();
   }
 
   this.toggleRegister = function(){
@@ -170,6 +172,7 @@ app.controller('mainController', ['$http', function($http) {
     if(this.loginModal === true){
       this.loginModal = false;
     }
+    this.closeForm();
   }
 
   this.showAccount = function(){
@@ -239,15 +242,18 @@ app.controller('mainController', ['$http', function($http) {
     this.showBookForm = false;
   }
 
+
   this.showBooks = function(){
     $http({
       url: this.url + '/users/:user_id/books',
       method: 'GET',
     }).then(function(response) {
       console.log(response);
-      this.book = response.data;
+      controller.bookList = response.data;
       console.log("==================");
-      console.log(this.book);
+      console.log("this is this.bookList, which is response.data", controller.bookList);
+      console.log("==================");
+
     })
   }
 
@@ -277,6 +283,20 @@ app.controller('mainController', ['$http', function($http) {
     // })
     this.showDestForm = false;
   }
+
+  this.getDestinations = function(){
+    $http({
+      url: this.url + '/users/:user_id/destinations',
+      method: 'GET',
+    }).then(function(response) {
+      console.log(response);
+      controller.destList = response.data;
+      console.log("==================");
+      console.log("this is this.destList, which is response.data", controller.destList);
+      console.log("==================");
+
+    })
+  }
 //Sarah end section
 
   this.closeForm = function(){
@@ -285,17 +305,17 @@ app.controller('mainController', ['$http', function($http) {
 
   //Toggle pages on button click
 
-  this.journalEntries = function(){
-    this.journal = !this.journal;
-    this.home = false;
-    this.destinations = false;
-    this.books = false
-    this.userPage = false;
-    this.account = false;
-    this.loginModal = false;
-    this.registerModal = false;
-    console.log("Journal entries listed");
-  }
+  // this.journalEntries = function(){
+  //   this.journal = !this.journal;
+  //   this.home = false;
+  //   this.destinations = false;
+  //   this.books = false
+  //   this.userPage = false;
+  //   this.account = false;
+  //   this.loginModal = false;
+  //   this.registerModal = false;
+  //   console.log("Journal entries listed");
+  // }
 
   this.savedDest = function(){
     this.destinations = !this.destinations;
@@ -306,6 +326,7 @@ app.controller('mainController', ['$http', function($http) {
     this.account = false;
     this.loginModal = false;
     this.registerModal = false;
+    this.getDestinations();
     console.log("Saved destinations listed");
   }
 
@@ -338,25 +359,7 @@ app.controller('mainController', ['$http', function($http) {
   /////////////////////////////////////////
 
 
-  //add to books to users
-  this.addToBooks = function(user_id, book_id){
-    $http({
-      method: "POST",
-      url: '/books/users',
-      data: {
-        user_id: user_id,
-        book_id: book_id
-      }
-    }).then(function(response){
-      if (response.data){
-      console.log("the book has been added to user's books");
-    } else {
-      console.log("keep working on books array");
-    }
-  }).then(function(error){
-    console.log(error);
-  })
-};
+
 
 
 
