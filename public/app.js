@@ -20,7 +20,7 @@ app.controller('mainController', ['$http', function($http) {
   this.updatedUser = {};
   this.postEntry = {};
 
-  this.userBooks = [];
+
 
   //hidden pages
   this.home = true;
@@ -241,15 +241,18 @@ app.controller('mainController', ['$http', function($http) {
     this.showBookForm = false;
   }
 
+
   this.showBooks = function(){
     $http({
       url: this.url + '/users/:user_id/books',
       method: 'GET',
     }).then(function(response) {
       console.log(response);
-      this.book = response.data;
+      this.bookList = response.data;
       console.log("==================");
-      console.log(this.book);
+      console.log("this is this.bookList, which is response.data", this.bookList);
+      console.log("==================");
+
     })
   }
 
@@ -338,27 +341,9 @@ app.controller('mainController', ['$http', function($http) {
 
 
   /////////////////////////////////////////
+  
 
 
-  //add to books to users
-  this.addToBooks = function(user_id, book_id){
-    $http({
-      method: "POST",
-      url: '/books/users',
-      data: {
-        user_id: user_id,
-        book_id: book_id
-      }
-    }).then(function(response){
-      if (response.data){
-      console.log("the book has been added to user's books");
-    } else {
-      console.log("keep working on books array");
-    }
-  }).then(function(error){
-    console.log(error);
-  })
-};
 
 
 
