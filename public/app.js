@@ -192,27 +192,27 @@ app.controller('mainController', ['$http', function($http) {
 
     }
 
-
-//Sarah section
-  this.createEntry = function(){
-    this.showJournalForm = true;
-  }
-
-  this.journalEntry = function(postEntry) {
-    // this.showJournalForm = true;
-    $http({
-      url: this.url + '/users',
-      method: 'POST',
-      data: { user: { post: postEntry.post }},
-    }).then(function(response) {
-      console.log(response);
-      this.user = response.data.user;
-    })
-    // console.log('Journal entry entered. Boom!' + postEntry.post);
-    // this.postEntry = postEntry;
-    // this.user.post = postEntry;
-    this.showJournalForm = false;
-  }
+// save for later? - app 2.0
+  // this.createEntry = function(){
+  //   this.showJournalForm = true;
+  // }
+  //
+  // this.journalEntry = function(user){
+  //   // this.showJournalForm = true;
+  //   $http({
+  //     url: this.url + '/users',
+  //     method: 'POST',
+  //     data: { user: { post: user.post }},
+  //   }).then(function(response) {
+  //     console.log(response);
+  //     this.user = response.data;
+  //     console.log(this.user);
+  //   })
+  //   // console.log('Journal entry entered. Boom!' + postEntry.post);
+  //   // this.postEntry = postEntry;
+  //   // this.user.post = postEntry;
+  //   this.showJournalForm = false;
+  // }
 
   this.createBook = function(){
     this.showBookForm = true;
