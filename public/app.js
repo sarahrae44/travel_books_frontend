@@ -61,7 +61,7 @@ app.controller('mainController', ['$http', function($http) {
     console.log('userPass.username is: ', userPass.username);
     console.log('userPass.password is: ', userPass.password);
     $http({
-      method: 'POST',
+      method: 'GET',
       url: this.url + '/users/login',
       data: { user: { username: userPass.username, password: userPass.password }},
     }).then(function(response) {
@@ -132,9 +132,8 @@ app.controller('mainController', ['$http', function($http) {
   this.deleteUser = function(userPass) {
     console.log('trying to delete user');
     $http({
-      url: this.url + '/users',
       method: 'DELETE',
-      url: '/users/' + this.user,
+      url: this.url + '/users/' + this.user,
       data: { user: { username: userPass.username, password: userPass.password }},
     }).then(function(response) {
       console.log(response);
@@ -155,14 +154,14 @@ app.controller('mainController', ['$http', function($http) {
 
   this.toggleLogin = function(){
     this.loginModal = !this.loginModal;
-    if(this.register === true){
-      this.register = false;
+    if(this.registerModal === true){
+      this.registerModal = false;
     }
   }
   this.toggleRegister = function(){
     this.registerModal = !this.registerModal;
-    if(this.login === false){
-      this.login = true;
+    if(this.loginModal === false){
+      this.loginModal = true;
     }
   }
   this.showAccount = function(){
