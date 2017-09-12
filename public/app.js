@@ -10,8 +10,8 @@ app.controller('mainController', ['$http', function($http) {
 
 
   console.log('this.userPass is: ', this.userPass);
-  loggedin = false;
-  console.log(loggedin);
+  this.loggedin = false;
+  console.log(this.loggedin);
 
 
   this.token = {};
@@ -52,13 +52,7 @@ app.controller('mainController', ['$http', function($http) {
 
    //login user
   this.login = function(userPass) {
-
-    console.log('The userPass.username & userPass.password ' + userPass.username + ' : ' + userPass.password)
     this.userPass = userPass;
-    loggedin = true;
-    console.log(loggedin);
-    console.log('userPass.username is: ', userPass.username);
-    console.log('userPass.password is: ', userPass.password);
     $http({
       method: 'POST',
       url: this.url + '/users/login',
@@ -67,6 +61,15 @@ app.controller('mainController', ['$http', function($http) {
       console.log(response);
       this.user = response.data.user;
       localStorage.setItem('token', JSON.stringify(response.data.token));
+      if (this.user === undefined){
+        this.loggedin = false
+      } else {
+        this.loggedin = true;
+      }
+      console.log('user logged in? ', this.loggedin);
+      console.log('the user is: ', this.user);
+      console.log('the userPass username is: ', userPass.username);
+      console.log('the userPass password is: ', userPass.password);
     }.bind(this));
   }
 
@@ -147,9 +150,9 @@ app.controller('mainController', ['$http', function($http) {
   }
   this.showAccount = function(){
     console.log('working on showAccount');
-    console.log('loggedin is now: ', loggedin);
-      if(loggedin === true){
-        console.log('loggedin is now: ', loggedin);
+    console.log('loggedin is now: ', this.loggedin);
+      if(this.loggedin === true){
+        console.log('loggedin is now: ', this.loggedin);
         this.userPage = !this.userPage;
         this.journal = false;
         this.home = false;
