@@ -15,7 +15,7 @@ https://travel-books.herokuapp.com/
 
 **Technologies Used:**
 
-Ruby, Rails, Postgresql, JWT Auth, Angular, Bootstrap, HTML5, CSS, Javascript, Postman
+Adobe XD, Ruby, Rails, Postgresql, JWT Auth, Angular, Bootstrap, HTML5, CSS, Javascript, Postman
 
 
 **Project Planning:**
@@ -27,9 +27,7 @@ Ruby, Rails, Postgresql, JWT Auth, Angular, Bootstrap, HTML5, CSS, Javascript, P
 
 - Users can create, edit, and delete an account with added posts which act as a journal for reading and travel adventures.  Users can add books and destinations
 
-**Wireframe:**
-
-https://xd.adobe.com/view/e55cef1d-2b23-46d9-a7f3-6fcfac4f0c86/
+**Wireframe:** https://xd.adobe.com/view/e55cef1d-2b23-46d9-a7f3-6fcfac4f0c86/
 
 
 **For Future Enhancement:**
