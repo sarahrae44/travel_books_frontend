@@ -142,7 +142,7 @@ app.controller('mainController', ['$http', function($http) {
       console.log(response);
       console.log(response.data);
       this.user = response.data;
-
+      this.showAccount();
     }.bind(this));
   }
 
