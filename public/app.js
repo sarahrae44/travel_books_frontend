@@ -211,7 +211,7 @@ app.controller('mainController', ['$http', function($http) {
 
   this.addBook = function(book){
     $http({
-      url: this.url + '/users/:user_id/books',
+      url: this.url + '/users/' + this.user.id + '/books',
       method: 'POST',
       data: { book: { title: book.title, author: book.author, isbn: book.isbn, genre: book.genre, user_id: this.user.id }},
     }).then(function(response) {
