@@ -39,7 +39,8 @@ app.controller('mainController', ['$http', function($http) {
   this.showBookForm = false;
   this.showDestForm = false;
 
-  this.url = 'http://localhost:3000' || 'http://travelbooksapi.herokuapp.com/';
+  // this.url = 'http://localhost:3000' || 'http://travelbooksapi.herokuapp.com/';
+  this.url = 'http://travelbooksapi.herokuapp.com/';
   // this.test = 'hi';
 
   // register new user
@@ -97,33 +98,13 @@ app.controller('mainController', ['$http', function($http) {
   }
 
 
-//Jen section:
+
   this.toggleEdit = function(){
     console.log('frontend trying to edit and edit button clicked');
     this.editDisplay = !this.editDisplay;
     console.log('editdisplay toggle works');
     }
 
-  // this.editUser = function() {
-  //   console.log('edit button pushed');
-  //   $http({
-  //     url: this.url + '/users/' + this.user.id,
-  //     method: 'POST',
-  //     headers: {
-  //     Authorization: 'Bearer ' + JSON.parse(localStorage.getItem('token'))
-  //     }.then(function(response) {
-  //     console.log(response);
-  //     console.log("==================");
-  //     console.log('this is this.user for edit', this.user);
-  //     this.user = response.data;
-  //     console.log("==================");
-  //     localStorage.setItem('token', JSON.stringify(response.data.token));
-  //   }.bind(this))
-  //   })
-  // }
-
-// Dan's hint to push something into the debug:
-// this.debug = {username: "edited", password: "edited"};
   this.editedUser = {};
 
   this.updatedUser = function(username, password) {
@@ -145,8 +126,6 @@ app.controller('mainController', ['$http', function($http) {
       this.showAccount();
     }.bind(this));
   }
-
-
 
   //delete user
   this.deleteUser = function(userPass) {
@@ -242,14 +221,6 @@ app.controller('mainController', ['$http', function($http) {
       console.log(this.book);
 
     }),
-    // $http({
-    //   url: this.url + '/users/:user_id/books',
-    //   method: 'POST',
-    //   data: { user: { book: { title: book.title }}},
-    // }).then(function(response) {
-    //   console.log(response);
-    //   this.user = response.data.user;
-    // })
     this.showBookForm = false;
   }
 
@@ -284,14 +255,6 @@ app.controller('mainController', ['$http', function($http) {
       console.log(response);
       this.destination = response.data.destination;
     }),
-    // $http({
-    //   url: this.url + '/users',
-    //   method: 'POST',
-    //   data: { user: { destination: { name: destination.name }}},
-    // }).then(function(response) {
-    //   console.log(response);
-    //   this.user = response.data.user;
-    // })
     this.showDestForm = false;
   }
 
@@ -308,7 +271,6 @@ app.controller('mainController', ['$http', function($http) {
 
     })
   }
-//Sarah end section
 
   this.closeForm = function(){
     this.show = true;
