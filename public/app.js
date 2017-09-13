@@ -228,7 +228,7 @@ app.controller('mainController', ['$http', function($http) {
 
   this.showBooks = function(){
     $http({
-      url: this.url + '/users/:user_id/books',
+      url: this.url + '/users/' + this.user.id + '/books',
       method: 'GET',
     }).then(function(response) {
       console.log(response);
@@ -261,7 +261,9 @@ app.controller('mainController', ['$http', function($http) {
 
   this.getDestinations = function(){
     $http({
-      url: this.url + '/users/:user_id/destinations',
+      url: this.url + '/users/' + this.user.id + '/destinations',
+
+      // url: this.url + '/users/:user_id/destinations',
       method: 'GET',
     }).then(function(response) {
       console.log(response);
