@@ -27,6 +27,10 @@ Ruby, Rails, Postgresql, JWT Auth, Angular, Bootstrap, HTML5, CSS, javascript
 
 -Users can create, edit, and delete an account with added posts which act as a journal for reading and travel adventures.  Users can add books and destinations
 
+**Wireframe:**
+
+https://xd.adobe.com/view/e55cef1d-2b23-46d9-a7f3-6fcfac4f0c86/
+
 
 **For Future Enhancement:**
 
@@ -41,6 +45,10 @@ Ruby, Rails, Postgresql, JWT Auth, Angular, Bootstrap, HTML5, CSS, javascript
 -Update CORS access
 
 -Update one-to-many to many-to-many
+
+**For Future Reference:**
+
+Trello board: https://trello.com/b/jyrLoFga/project-4
 
 
 **Growth & Achievements:**
