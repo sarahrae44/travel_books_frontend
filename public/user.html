@@ -6,10 +6,10 @@
   <!-- {{ ctrl.test }} -->
 
   <div class="row" style="margin-bottom: 2rem" >
-    <section class="col-xs-3 col-xs-offset-3">
-      <img class="profile-pic img-thumbnail img-responsive" src="" alt="Profile Photo"/>
+    <section class="col-xs-2 col-xs-offset-2">
+      <!-- <img class="profile-pic img-thumbnail img-responsive" src="" alt="Profile Photo"/> -->
     </section>
-    <section class="col-xs-6">
+    <section class="col-xs-7">
       <h2 class="subtitle">Welcome, {{ctrl.userPass.username}}</h2>
       <h2 class="subtitle">Where would you like to go today?</h2>
     </section>
@@ -23,11 +23,11 @@
     <ul>
 
       <!--- Create a journal entry  ---->
-      <li><button class="btn btn-default" ng-click="ctrl.createEntry()">Create a journal entry</li>
+      <!-- <li><button class="btn btn-default" ng-click="ctrl.createEntry()">Create a journal entry</li>
         <form ng-if="ctrl.showJournalForm" class="ng-modal-overlay ng-modal-dialog" ng-submit="ctrl.journalEntry(postEntry)">
           <textarea cols="50" rows="10" ng-model="postEntry.post" placeholder="post"/></textarea>
           <input type="submit"/>
-        </form>
+        </form> -->
 
 
         <!--- Add a book  ---->
@@ -35,7 +35,7 @@
           <form ng-if="ctrl.showBookForm" class="ng-modal-overlay ng-modal-dialog" ng-submit="ctrl.addBook(book)">
             <input type="text" ng-model="book.title" placeholder="Title"/>
             <input type="text" ng-model="book.author" placeholder="Author"/>
-            <input type="text" ng-model="book.isbn" placeholder="ISBN"/>
+            <!-- <input type="text" ng-model="book.isbn" placeholder="ISBN"/> -->
             <input type="text" ng-model="book.genre" placeholder="Genre"/>
             <input type="submit"/>
           </form>
@@ -65,7 +65,7 @@
             <li class="btn btn-default" ng-click="ctrl.getAccount()"><span class="glyphicon glyphicon-cog"></span></li>
 
             <!--- Go to journal entries  ---->
-            <li class="btn btn-default" ng-click="ctrl.journalEntries()"><span class="glyphicon glyphicon-pencil"></span></li>
+            <!-- <li class="btn btn-default" ng-click="ctrl.journalEntries()"><span class="glyphicon glyphicon-pencil"></span></li> -->
 
 
             <!--- Go to saved books  ---->

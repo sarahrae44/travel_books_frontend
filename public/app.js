@@ -3,6 +3,7 @@ console.log('app.js is working');
 const app = angular.module('auth_app', []);
 
 app.controller('mainController', ['$http', function($http) {
+  const controller = this;
   this.user = {};
   console.log('this.user is: ', this.user);
   this.users = [];
@@ -20,7 +21,7 @@ app.controller('mainController', ['$http', function($http) {
   this.updatedUser = {};
   this.postEntry = {};
 
-  this.userBooks = [];
+
 
   //hidden pages
   this.home = true;
@@ -103,55 +104,64 @@ app.controller('mainController', ['$http', function($http) {
     console.log('editdisplay toggle works');
     }
 
-  this.editUser = function() {
-    console.log('edit button pushed');
+  // this.editUser = function() {
+  //   console.log('edit button pushed');
+  //   $http({
+  //     url: this.url + '/users/' + this.user.id,
+  //     method: 'POST',
+  //     headers: {
+  //     Authorization: 'Bearer ' + JSON.parse(localStorage.getItem('token'))
+  //     }.then(function(response) {
+  //     console.log(response);
+  //     console.log("==================");
+  //     console.log('this is this.user for edit', this.user);
+  //     this.user = response.data;
+  //     console.log("==================");
+  //     localStorage.setItem('token', JSON.stringify(response.data.token));
+  //   }.bind(this))
+  //   })
+  // }
+
+// Dan's hint to push something into the debug:
+// this.debug = {username: "edited", password: "edited"};
+  this.editedUser = {};
+
+  this.updatedUser = function(username, password) {
+    // console.log(userPass);
+    console.log('trying to update user');
     $http({
-      url: this.url + '/user',
-      method: 'PUT',
+
+      method: 'PATCH',
       headers: {
       Authorization: 'Bearer ' + JSON.parse(localStorage.getItem('token'))
-      }.then(function(response) {
+    },
+      url: this.url + '/users/' + this.user.id,
+      data: { user: { username: username, password: password }}
+      // console.log(response.data);
+    }).then(function(response) {
       console.log(response);
-      console.log("==================");
-      console.log('this is this.user for edit', this.user);
+      console.log(response.data);
       this.user = response.data;
-      console.log("==================");
-      localStorage.setItem('token', JSON.stringify(response.data.token));
-    }.bind(this))
-    })
+      this.showAccount();
+    }.bind(this));
   }
 
 
-  this.updateUser = function() {
-    $http({
-      url: this.url + '/users/' + this.user,
-      method: 'POST',
-      headers: {
-      Authorization: 'Bearer ' + JSON.parse(localStorage.getItem('token'))
-      }.then(function(response) {
-      console.log(response);
-      this.updatedUser = response.data.user;
-      localStorage.setItem('token', JSON.stringify(response.data.token));
-    }.bind(this))
-    })
-  }
 
   //delete user
   this.deleteUser = function(userPass) {
     console.log('trying to delete user');
     $http({
       method: 'DELETE',
-      url: this.url + '/users/' + this.user
+      url: this.url + '/users/' + this.user.id
     }).then(function(response) {
       console.log(response);
       this.logout();
     }.bind(this));
   }
 
-  //   })
-  // }
 
-//end Jen section
+
 
   this.logout = function() {
     localStorage.clear('token');
@@ -161,15 +171,19 @@ app.controller('mainController', ['$http', function($http) {
 
 
   this.toggleLogin = function(){
-    if(this.registerModal === false){
-      this.loginModal = true;
+    this.loginModal = !this.loginModal
+    if(this.registerModal === true){
+      this.registerModal = false;
     }
+    this.closeForm();
   }
 
   this.toggleRegister = function(){
-    if(this.loginModal === false){
-      this.registerModal = true;
+    this.registerModal = !this.registerModal
+    if(this.loginModal === true){
+      this.loginModal = false;
     }
+    this.closeForm();
   }
 
   this.showAccount = function(){
@@ -190,27 +204,27 @@ app.controller('mainController', ['$http', function($http) {
 
     }
 
-
-//Sarah section
-  this.createEntry = function(){
-    this.showJournalForm = true;
-  }
-
-  this.journalEntry = function(postEntry) {
-    // this.showJournalForm = true;
-    $http({
-      url: this.url + '/users',
-      method: 'POST',
-      data: { user: { post: postEntry.post }},
-    }).then(function(response) {
-      console.log(response);
-      this.user = response.data.user;
-    })
-    // console.log('Journal entry entered. Boom!' + postEntry.post);
-    // this.postEntry = postEntry;
-    // this.user.post = postEntry;
-    this.showJournalForm = false;
-  }
+// save for later? - app 2.0
+  // this.createEntry = function(){
+  //   this.showJournalForm = true;
+  // }
+  //
+  // this.journalEntry = function(user){
+  //   // this.showJournalForm = true;
+  //   $http({
+  //     url: this.url + '/users',
+  //     method: 'POST',
+  //     data: { user: { post: user.post }},
+  //   }).then(function(response) {
+  //     console.log(response);
+  //     this.user = response.data;
+  //     console.log(this.user);
+  //   })
+  //   // console.log('Journal entry entered. Boom!' + postEntry.post);
+  //   // this.postEntry = postEntry;
+  //   // this.user.post = postEntry;
+  //   this.showJournalForm = false;
+  // }
 
   this.createBook = function(){
     this.showBookForm = true;
@@ -239,15 +253,18 @@ app.controller('mainController', ['$http', function($http) {
     this.showBookForm = false;
   }
 
+
   this.showBooks = function(){
     $http({
       url: this.url + '/users/:user_id/books',
       method: 'GET',
     }).then(function(response) {
       console.log(response);
-      this.book = response.data;
+      controller.bookList = response.data;
       console.log("==================");
-      console.log(this.book);
+      console.log("this is this.bookList, which is response.data", controller.bookList);
+      console.log("==================");
+
     })
   }
 
@@ -277,6 +294,20 @@ app.controller('mainController', ['$http', function($http) {
     // })
     this.showDestForm = false;
   }
+
+  this.getDestinations = function(){
+    $http({
+      url: this.url + '/users/:user_id/destinations',
+      method: 'GET',
+    }).then(function(response) {
+      console.log(response);
+      controller.destList = response.data;
+      console.log("==================");
+      console.log("this is this.destList, which is response.data", controller.destList);
+      console.log("==================");
+
+    })
+  }
 //Sarah end section
 
   this.closeForm = function(){
@@ -285,17 +316,17 @@ app.controller('mainController', ['$http', function($http) {
 
   //Toggle pages on button click
 
-  this.journalEntries = function(){
-    this.journal = !this.journal;
-    this.home = false;
-    this.destinations = false;
-    this.books = false
-    this.userPage = false;
-    this.account = false;
-    this.loginModal = false;
-    this.registerModal = false;
-    console.log("Journal entries listed");
-  }
+  // this.journalEntries = function(){
+  //   this.journal = !this.journal;
+  //   this.home = false;
+  //   this.destinations = false;
+  //   this.books = false
+  //   this.userPage = false;
+  //   this.account = false;
+  //   this.loginModal = false;
+  //   this.registerModal = false;
+  //   console.log("Journal entries listed");
+  // }
 
   this.savedDest = function(){
     this.destinations = !this.destinations;
@@ -306,6 +337,7 @@ app.controller('mainController', ['$http', function($http) {
     this.account = false;
     this.loginModal = false;
     this.registerModal = false;
+    this.getDestinations();
     console.log("Saved destinations listed");
   }
 
@@ -318,6 +350,7 @@ app.controller('mainController', ['$http', function($http) {
     this.account = false;
     this.loginModal = false;
     this.registerModal = false;
+    this.showBooks();
     console.log("Saved books listed");
   }
 
@@ -337,26 +370,8 @@ app.controller('mainController', ['$http', function($http) {
   /////////////////////////////////////////
 
 
-  //add to books to users
-  this.addToBooks = function(user_id, book_id){
-    $http({
-      method: "POST",
-      url: '/books/users',
-      data: {
-        user_id: user_id,
-        book_id: book_id
-      }
-    }).then(function(response){
-      if (response.data){
-      console.log("the book has been added to user's books");
-    } else {
-      console.log("keep working on books array");
-    }
-  }).then(function(error){
-    console.log(error);
-  })
-};
 
-this.showBooks();
+
+
 
 }]); //end controller
