@@ -59,8 +59,8 @@ Trello board: https://trello.com/b/jyrLoFga/project-4
 
 **Growth & Achievements:**
 
--Sarah Anderson: Modals, Book CR, Postgresql database management, Front-end Github management, Front-end JWT Auth, TDD, Trouble-shooting, Wireframe
+- Sarah Anderson: Modals, Book CR, Postgresql database management, Front-end Github management, Front-end JWT Auth, TDD, Trouble-shooting, Wireframe
 
--Tiffany Monroe: Modals, Destinations CR, Angular magic, Bootstrap, CSS, Back-end Github management, 3rd party API research, TDD, Trouble-shooting
+- Tiffany Monroe: Modals, Destinations CR, Angular magic, Bootstrap, CSS, Back-end Github management, 3rd party API research, TDD, Trouble-shooting
 
--Jen Schumann: Back-end JWT Auth, SCRUM butt, User stories, User CRU(D-Sarah), CORS, TDD, Trouble-shooting
+- Jen Schumann: Back-end JWT Auth, SCRUM butt, User stories, User CRU(D-Sarah), CORS, TDD, Trouble-shooting
