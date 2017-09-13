@@ -104,38 +104,49 @@ app.controller('mainController', ['$http', function($http) {
     console.log('editdisplay toggle works');
     }
 
-  this.editUser = function() {
-    console.log('edit button pushed');
+  // this.editUser = function() {
+  //   console.log('edit button pushed');
+  //   $http({
+  //     url: this.url + '/users/' + this.user.id,
+  //     method: 'POST',
+  //     headers: {
+  //     Authorization: 'Bearer ' + JSON.parse(localStorage.getItem('token'))
+  //     }.then(function(response) {
+  //     console.log(response);
+  //     console.log("==================");
+  //     console.log('this is this.user for edit', this.user);
+  //     this.user = response.data;
+  //     console.log("==================");
+  //     localStorage.setItem('token', JSON.stringify(response.data.token));
+  //   }.bind(this))
+  //   })
+  // }
+
+// Dan's hint to push something into the debug:
+// this.debug = {username: "edited", password: "edited"};
+  this.editedUser = {};
+
+  this.updatedUser = function(username, password) {
+    // console.log(userPass);
+    console.log('trying to update user');
     $http({
-      url: this.url + '/users/' + this.user.id,
-      method: 'PUT',
+
+      method: 'PATCH',
       headers: {
       Authorization: 'Bearer ' + JSON.parse(localStorage.getItem('token'))
-      }.then(function(response) {
+    },
+      url: this.url + '/users/' + this.user.id,
+      data: { user: { username: username, password: password }}
+      // console.log(response.data);
+    }).then(function(response) {
       console.log(response);
-      console.log("==================");
-      console.log('this is this.user for edit', this.user);
+      console.log(response.data);
       this.user = response.data;
-      console.log("==================");
-      localStorage.setItem('token', JSON.stringify(response.data.token));
-    }.bind(this))
-    })
+
+    }.bind(this));
   }
 
 
-  this.updateUser = function() {
-    $http({
-      url: this.url + '/users/' + this.user.id,
-      method: 'POST',
-      headers: {
-      Authorization: 'Bearer ' + JSON.parse(localStorage.getItem('token'))
-      }.then(function(response) {
-      console.log(response);
-      this.updatedUser = response.data.user;
-      localStorage.setItem('token', JSON.stringify(response.data.token));
-    }.bind(this))
-    })
-  }
 
   //delete user
   this.deleteUser = function(userPass) {
