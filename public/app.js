@@ -211,6 +211,7 @@ app.controller('mainController', ['$http', function($http) {
 
   this.addBook = function(book){
     $http({
+
       url: this.url + '/users/' + this.user.id + '/books',
       method: 'POST',
       data: { book: { title: book.title, author: book.author, isbn: book.isbn, genre: book.genre, user_id: this.user.id }},
@@ -248,7 +249,7 @@ app.controller('mainController', ['$http', function($http) {
 
   this.addDest = function(destination){
     $http({
-      url: this.url + '/users/:user_id/destinations',
+      url: this.url + '/users/' + this.user.id + '/destinations',
       method: 'POST',
       data: { destination: { name: destination.name, purpose: destination.purpose, transportation: destination.transportation, season: destination.season, climate: destination.climate, user_id: this.user.id }},
     }).then(function(response) {
