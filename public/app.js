@@ -40,7 +40,7 @@ app.controller('mainController', ['$http', function($http) {
   this.showDestForm = false;
 
   // this.url = 'http://localhost:3000' || 'http://travelbooksapi.herokuapp.com/';
-  this.url = 'http://travelbooksapi.herokuapp.com/';
+  this.url = 'https://travelbooksapi.herokuapp.com/';
   // this.test = 'hi';
 
   // register new user
